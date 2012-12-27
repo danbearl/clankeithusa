@@ -1,16 +1,12 @@
-= form_for @section do |f|
-  - if @section.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@section.errors.count, "error")} prohibited this section from being saved:"
-      %ul
-        - @section.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :body
-    = f.text_area :body
-  .actions
-    = f.submit 'Save'
+= form_for @section, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .control-group
+    = f.label :body, :class => 'control-label'
+    .controls
+      = f.text_area :body, :class => 'text_area'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), sections_path, :class => 'btn'

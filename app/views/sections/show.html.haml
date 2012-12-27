@@ -1,12 +1,17 @@
-%p#notice= notice
+- model_class = Section
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
 
 %p
-  %b Name:
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
   = @section.name
 %p
-  %b Body:
+  %strong= model_class.human_attribute_name(:body) + ':'
+  %br
   = @section.body
 
-= link_to 'Edit', edit_section_path(@section)
-\|
-= link_to 'Back', sections_path
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), sections_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_section_path(@section), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), section_path(@section), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
