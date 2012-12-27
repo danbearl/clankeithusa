@@ -38,6 +38,8 @@ GEM
       mime-types
       xml-simple
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.2.2.0)
+      sass (~> 3.2)
     builder (3.0.4)
     buildybuild (1.1.0)
       decent_exposure
@@ -208,6 +210,7 @@ DEPENDENCIES
   authem
   aws-s3
   bcrypt-ruby
+  bootstrap-sass
   buildybuild
   capybara
   carrierwave
