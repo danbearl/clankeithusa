@@ -1,5 +1,7 @@
 class Page < ActiveRecord::Base
 
+  belongs_to :section
+  
   attr_accessible :body, :name, :slug
 
   default_scope order('created_at DESC, updated_at DESC')

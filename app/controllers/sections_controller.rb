@@ -1,6 +1,11 @@
 class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
+
+  expose(:sections)
+  expose(:section)
+  expose(:pages) {Sectiion.find[:section_id]}
+
   def index
     @sections = Section.all
 
