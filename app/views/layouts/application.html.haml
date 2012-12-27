@@ -1,10 +1,16 @@
 !!! 5
 %html
   %head
-    %title Clan Keith Usa
-    %= stylesheet_link_tag    "application", :media => "all"
-    %= javascript_include_tag "application"
-    %= csrf_meta_tags
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %title= content_for?(:title) ? yield(:title) : "Clan Keith USA"
+    %meta{:content => "The official Web site for Clan Keith USA", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield(:head)
+
   %body
     .container
       .row
@@ -26,7 +32,7 @@
                       %li= link_to(store)
       .row
         .span9
-          <%= yield %>
+          = yield
         .span3
           %p Sidebar Stuff
       .footer
