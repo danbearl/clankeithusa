@@ -1,9 +1,20 @@
 source 'https://rubygems.org'
 
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'authem'
+gem 'aws-s3'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'buildybuild'
+gem 'carrierwave'
+gem 'decent_exposure'
+gem 'fog'
+gem 'formal'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'pg'
 gem 'rails', '3.2.8'
-gem 'sqlite3'
+gem 'rdiscount'
+gem 'rmagick'
+gem 'will_paginate', '~> 3.0.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -11,4 +22,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :development, :test do
+  gem 'sqlite3'
+  gem 'pry'
+  gem 'fabrication'
+  gem 'database_cleaner'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'dirty'
+  gem 'rspec-rails'
+  gem 'capybara'
+end
