@@ -1,8 +1,21 @@
-%nav.actions
-  = link_to "edit", edit_slug_path(page.slug)
-  |
-  = link_to "delete", slug_path(page.slug), method: :destroy
+- model_class = Page
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
 
-%article
-  :markdown
-    #{page.body}
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @page.name
+%p
+  %strong= model_class.human_attribute_name(:slug) + ':'
+  %br
+  = @page.slug
+%p
+  %strong= model_class.human_attribute_name(:body) + ':'
+  %br
+  = @page.body
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), pages_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_page_path(@page), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), page_path(@page), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
