@@ -55,4 +55,12 @@ Clankeithusa::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  resources :pages, only: [:new, :create]
+
+  #keep these at the bottom of your file. They should be the last routes.
+  get "/:slug", to: "pages#show", as: :slug
+  get "/:slug/edit", to: "pages#edit", as: :edit_slug
+  put "/:slug", to: "pages#update", as: :slug
+  post "/:slug", to: "pages#destroy", as: :slug
 end
