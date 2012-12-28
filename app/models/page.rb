@@ -1,6 +1,10 @@
 class Page < ActiveRecord::Base
 
-  belongs_to :section
+  has_many :sub_pages, class_name: "Page",
+    foreign_key: "parent_id"
+  belongs_to :parent, class_name: "Page"
+
+  has_many :galleries
   
   attr_accessible :body, :name, :slug
 

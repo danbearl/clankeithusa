@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  expose(:sections)
-  expose(:section)
+  expose(:pages) {Pages.where("page_id = nil")}
 end

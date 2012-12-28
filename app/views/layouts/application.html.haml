@@ -20,16 +20,12 @@
           .nav-bar-inner
             .container
               %ul.nav
-                - sections.each do |s|
+                - pages.each do |p|
                   %li.dropdown
-                    %a(href="#" class="dropdown-toggle" data-toggle="dropdown")= s.name
+                    %a(href="#" class="dropdown-toggle" data-toggle="dropdown")= p.name
                   %ul.dropdown-menu
-                    - s.pages.each do |page|
+                    - p.pages.each do |page|
                       %li= link_to(page)
-                    - s.galleries.each do |gallery|
-                      %li= link_to(gallery)
-                    - s.stores.each do |store|
-                      %li= link_to(store)
       .row
         .span9
           = yield
