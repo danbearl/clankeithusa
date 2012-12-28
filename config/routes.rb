@@ -1,6 +1,4 @@
 Clankeithusa::Application.routes.draw do
-  resources :sections
-
   root :to => 'sections#index'
 
   resources :pages, only: [:new, :create, :index]
