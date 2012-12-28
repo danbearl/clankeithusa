@@ -1,5 +1,5 @@
 Clankeithusa::Application.routes.draw do
-  root :to => 'sections#index'
+  root :to => 'pages#index'
 
   resources :pages, only: [:new, :create, :index]
 

@@ -1,4 +1,5 @@
-= form_for @page, :html => { :class => 'form-horizontal' } do |f|
+= form_for page, :html => { :class => 'form-horizontal' } do |f|
+  = f.hidden_field :parent_id, value: params[:parent_id]
   .control-group
     = f.label :name, :class => 'control-label'
     .controls
