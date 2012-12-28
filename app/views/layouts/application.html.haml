@@ -20,7 +20,7 @@
           .navbar-inner
             .container
               %ul.nav
-                - pages.each do |p|
+                - sections.each do |p|
                   %li.dropdown
                     %a(href="#" class="dropdown-toggle" data-toggle="dropdown")= p.name
                     %ul.dropdown-menu
