@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @image.name
+%p
+  %b Picture:
+  = @image.picture
+%p
+  %b Imageable:
+  = @image.imageable_id
+%p
+  %b Imageable type:
+  = @image.imageable_type
+%p
+  %b Priority:
+  = @image.priority
+%p
+  %b Description:
+  = @image.description
+
+= link_to 'Edit', edit_image_path(@image)
+\|
+= link_to 'Back', images_path

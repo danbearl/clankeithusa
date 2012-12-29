@@ -1,4 +1,6 @@
 Clankeithusa::Application.routes.draw do
+  resources :images
+
   root :to => 'pages#index'
 
   resources :pages, only: [:new, :create, :index]

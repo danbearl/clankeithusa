@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  picture: MyString
+  imageable_id: 1
+  imageable_type: MyString
+  priority: 1
+  description: MyText
+
+two:
+  name: MyString
+  picture: MyString
+  imageable_id: 1
+  imageable_type: MyString
+  priority: 1
+  description: MyText
