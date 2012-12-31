@@ -2,23 +2,22 @@
 
 %p
   %b Name:
-  = @image.name
-%p
-  %b Picture:
-  = @image.picture
+  = image.name
 %p
   %b Imageable:
-  = @image.imageable_id
+  = image.imageable_id
 %p
   %b Imageable type:
-  = @image.imageable_type
+  = image.imageable_type
 %p
   %b Priority:
-  = @image.priority
+  = image.priority
 %p
   %b Description:
-  = @image.description
+  = image.description
 
-= link_to 'Edit', edit_image_path(@image)
+= image_tag image.picture_url
+
+= link_to 'Edit', edit_image_path(image)
 \|
 = link_to 'Back', images_path

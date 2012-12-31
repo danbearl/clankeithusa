@@ -3,7 +3,11 @@ Clankeithusa::Application.routes.draw do
 
   root :to => 'pages#index'
 
-  resources :pages, only: [:new, :create, :index]
+  resources :pages, only: [:new, :create, :index] do
+    resources :images
+  end
+
+  resources :images
 
   #keep these at the bottom of your file. They should be the last routes.
   get "/:slug", to: "pages#show", as: :slug
