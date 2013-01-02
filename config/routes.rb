@@ -7,6 +7,8 @@ Clankeithusa::Application.routes.draw do
     resources :images
   end
 
+  resources :events
+
   resources :images
 
   #keep these at the bottom of your file. They should be the last routes.
