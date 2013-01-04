@@ -6,7 +6,7 @@ Clankeithusa::Application.routes.draw do
   resources :user_sessions
   resources :images
 
-  root :to => 'pages#index'
+  root :to => 'home#index'
 
   resources :pages, only: [:new, :create, :index] do
     resources :images
