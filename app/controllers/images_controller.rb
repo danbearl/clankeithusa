@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
 
+  before_filter :require_admin, except: :show
+
   expose(:images)
   expose(:image) 
   expose(:owner) { image.imageable }

@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+  before_filter :require_admin, only: [:new, :create, :edit, :destroy, :index]
+
   expose(:pages)
   expose(:page, finder: :find_by_slug, finder_parameter: :slug)
   expose(:new_page, model: Page)
