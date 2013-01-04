@@ -1,4 +1,6 @@
 Clankeithusa::Application.routes.draw do
+  get "user_sessions/new"
+
   resources :users
 
   resources :images
