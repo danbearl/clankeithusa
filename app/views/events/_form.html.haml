@@ -1,0 +1,23 @@
+.control-group
+  = f.label :title
+  .controls
+    = f.text_field :title
+
+.control-group
+  = f.label :starts_at
+  .controls
+    = f.datetime_select :starts_at
+
+.control-group
+  = f.label :ends_at
+  .controls
+    = f.datetime_select :ends_at
+
+.control-group
+  = f.label :description
+  .controls
+    = f.text_area :description, class: "input-xxlarge"
+
+.form-actions
+  = f.submit nil, class: 'btn btn-primary'
+  = link_to t('.cancel', default: t("helpers.links.cancel")), events_path, class: 'btn'
