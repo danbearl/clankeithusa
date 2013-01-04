@@ -7,17 +7,17 @@
           %li= msg
 
   .field
+    = f.label :name
+    = f.text_field :name
+  .field
     = f.label :email
     = f.text_field :email
   .field
-    = f.label :salt
-    = f.text_field :salt
+    = f.label :password
+    = f.text_field :password
   .field
-    = f.label :crypted_password
-    = f.text_field :crypted_password
-  .field
-    = f.label :name
-    = f.text_field :name
+    = f.label :password_confirmation
+    = f.text_field :password_confirmation
   .field
     = f.label :admin
     = f.check_box :admin

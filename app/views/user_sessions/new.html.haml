@@ -1,2 +1,15 @@
-%h1 UserSessions#new
-%p Find me in app/views/user_sessions/new.html.haml
+%h1 Log In
+
+= form_tag user_sessions_path do
+  .control-group
+    = label_tag :email
+    .controls
+      = text_field_tag :email, params[:email]
+
+  .control-group
+    = label_tag :password
+    .controls
+      = password_field_tag :password, params[:password]
+
+  .form-actions
+    = submit_tag "Log In"

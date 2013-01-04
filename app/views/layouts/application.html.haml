@@ -30,6 +30,15 @@
                         %li= link_to(page.name, slug_path(page.slug))
                 %li
                   = link_to 'Calendar', events_path
+                - if !current_user
+                  %li
+                    = link_to "Log In", "/log_in"
+                - else
+                  %li
+                    = link_to "Log Out", "/log_out"
+                - if user_is_admin?
+                  %li
+                    = link_to 'New User', new_user_path
       .row
         .span9
           = yield

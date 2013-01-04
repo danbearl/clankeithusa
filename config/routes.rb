@@ -1,8 +1,9 @@
 Clankeithusa::Application.routes.draw do
   get "log_in" => "user_sessions#new", as: "log_in"
+  get "log_out" => "user_sessions#destroy", as: "log_out"
 
   resources :users
-
+  resources :user_sessions
   resources :images
 
   root :to => 'pages#index'
