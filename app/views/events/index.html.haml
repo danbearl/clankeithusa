@@ -1,2 +1,31 @@
 %h1 Events
 
+= link_to t('.new', default: t("helpers.links.new")), new_event_path, class: 'btn btn-primary'
+
+- events_scoped.each do |event|
+  .row
+    .span9.calendar-event
+      %h4= event.title
+      %br
+      = "Starts: #{event.starts_at}"
+      %br
+      = "Ends: #{event.ends_at}"
+      %br
+      Description:
+      %br
+      = event.description
+      %br
+      = link_to t('.edit', default: t("helpers.links.edit")), edit_event_path(event), class: 'btn btn-mini'
+      = link_to t('.destroy', default: t("helpers.links.destroy")), event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+
+= form_tag("/events", method: "get") do
+  .control-group
+    = label_tag :start, "Start Date:"
+    .controls
+      = select_date params[:start], prefix: :start_date, class: "span1"
+  .control-group
+    = label_tag :end, "End Date:"
+    .controls
+      = select_date params[:end], prefix: :end_date, class: "span1"
+  .form-actions
+    = submit_tag "Filter Events"
