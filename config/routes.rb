@@ -1,5 +1,5 @@
 Clankeithusa::Application.routes.draw do
-  get "user_sessions/new"
+  get "log_in" => "user_sessions#new", as: "log_in"
 
   resources :users
 
