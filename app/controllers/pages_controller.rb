@@ -11,16 +11,6 @@ class PagesController < ApplicationController
   # the navigation in your Application Layout
   expose(:page_slugs ) { Page.select(:slug).map(&:slug) }
 
-  def show
-    @markdown_image_ids = ''
-
-    if images.length > 0
-      images.each do |i|
-        @markdown_image_ids << "[" + i.id.to_s + "]:" + i.picture_url(:thumb) + "\n\n"
-      end
-    end
-  end
-
   def create
     if new_page.save
       redirect_to slug_path(new_page.slug)
