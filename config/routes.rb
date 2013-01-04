@@ -1,4 +1,6 @@
 Clankeithusa::Application.routes.draw do
+  resources :users
+
   resources :images
 
   root :to => 'pages#index'
