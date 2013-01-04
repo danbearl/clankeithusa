@@ -6,7 +6,7 @@ class Page < ActiveRecord::Base
   has_many :images, as: :imageable
   has_many :galleries
   
-  attr_accessible :body, :name, :slug, :parent_id
+  attr_accessible :body, :name, :slug, :parent_id, :public
 
   default_scope order('created_at DESC, updated_at DESC')
 
