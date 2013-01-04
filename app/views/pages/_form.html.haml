@@ -18,7 +18,7 @@
 .control-group
   = f.label :parent_id
   .controls
-    - @pages_array = sections.map {|page| [page.name, page.id]}
+    - @pages_array = Page.all.map {|page| [page.name, page.id]}
     - @pages_array << ["None", nil]
     = f.select(:parent_id, options_for_select(@pages_array, page.parent_id))
 .form-actions

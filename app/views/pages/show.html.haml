@@ -1,3 +1,12 @@
+- if page.sub_pages.length > 0
+  .row
+    .navbar
+      .navbar-inner
+        .container
+          %ul.nav
+            - page.sub_pages.each do |p|
+              %li= link_to(p.name, slug_path(p.slug))
+
 .page-header
   %h1=t '.title', :default => page.name
 
