@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
 
   include Authem::ControllerSupport
 
-  expose(:pages)
+  expose(:pages) { Page.reorder(:priority) }
   expose(:sections) do
-    pages.where(:parent_id => nil)
+    pages.where(:parent_id => 0).reorder(:priority)
   end
+  expose(:page_slugs ) { Page.select(:slug).map(&:slug) }
 
   private
 

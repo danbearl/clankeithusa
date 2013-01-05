@@ -16,10 +16,14 @@
   .controls
     = f.check_box :public
 .control-group
+  = f.label :priority
+  .controls
+    = f.text_field :priority, class: "input-mini"
+.control-group
   = f.label :parent_id
   .controls
     - @pages_array = Page.all.map {|page| [page.name, page.id]}
-    - @pages_array << ["None", nil]
+    - @pages_array << ["None", 0]
     = f.select(:parent_id, options_for_select(@pages_array, page.parent_id))
 .form-actions
   = f.submit nil, :class => 'btn btn-primary'

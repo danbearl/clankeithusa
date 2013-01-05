@@ -1,10 +1,10 @@
-- if page.sub_pages.length > 0
+- if sub_pages.length > 0
   .row
     .navbar
       .navbar-inner
         .container
           %ul.nav
-            - page.sub_pages.each do |p|
+            - sub_pages.each do |p|
               - if p.public or current_user
                 %li= link_to(p.name, slug_path(p.slug))
 

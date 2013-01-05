@@ -28,7 +28,7 @@
                       %ul.dropdown-menu
                         - if user_is_admin?
                           %li= link_to(p.name, slug_path(p.slug))
-                        - p.sub_pages.each do |page|
+                        - p.sub_pages.reorder(:priority).each do |page|
                           - if page.public or current_user
                             %li= link_to(page.name, slug_path(page.slug))
                 %li

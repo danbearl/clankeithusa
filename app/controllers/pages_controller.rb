@@ -2,14 +2,10 @@ class PagesController < ApplicationController
 
   before_filter :require_admin, only: [:new, :create, :edit, :destroy, :index]
 
-  expose(:pages)
   expose(:page, finder: :find_by_slug, finder_parameter: :slug)
   expose(:new_page, model: Page)
   expose(:images) { page.images }
-
-  # Move this to the ApplicationController if you want to have
-  # the navigation in your Application Layout
-  expose(:page_slugs ) { Page.select(:slug).map(&:slug) }
+  expose(:sub_pages) {page.sub_pages.reorder(:priority) }
 
   def create
     if new_page.save
