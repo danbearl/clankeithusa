@@ -16,6 +16,14 @@
       .row
         .span12
           #banner
+      - if user_is_admin?
+        .row
+          .navbar
+            .navbar-inner
+              %ul.nav
+                %li Admin Tools:
+                %li= link_to "Pages", pages_path
+                %li= link_to "Users", users_path
       .row
         .navbar.nav-fixed-top
           .navbar-inner
@@ -26,8 +34,6 @@
                     %li.dropdown
                       %a(href="#" class="dropdown-toggle" data-toggle="dropdown")= p.name
                       %ul.dropdown-menu
-                        - if user_is_admin?
-                          %li= link_to(p.name, slug_path(p.slug))
                         - p.sub_pages.reorder(:priority).each do |page|
                           - if page.public or current_user
                             %li= link_to(page.name, slug_path(page.slug))
@@ -39,9 +45,6 @@
                 - else
                   %li
                     = link_to "Log Out", "/log_out"
-                - if user_is_admin?
-                  %li
-                    = link_to 'New User', new_user_path
       .row
         .span9
           = yield
