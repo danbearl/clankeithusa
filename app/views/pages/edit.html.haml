@@ -1,17 +1,16 @@
 - model_class = Page
 .row
-  .span6
+  .span9
+    =link_to "Images", "#", rel: "popover", 'data-html' => 'true', 'data-position' => 'left'
+
     %h1=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human, :default => "Edit #{model_class.model_name.human}")
     = form_for page, url: slug_path(page.slug), builder: Formal::Builder do |f|
       = render partial: "form", locals: { f:f }
-
-  .span3
-    %h4 Images
-    .accordion#accordion2
-      - images.each do |i|
-        .accordion-group
-          .accordion-heading
-            = link_to image_tag(i.picture_url(:thumb)), "#collapse_#{i.id}", 'data-toggle' => "collapse", class: "accordion-toggle", 'data-parent' => "#accordion2"
-          .accordion-body.collapse{ :id => "collapse_#{i.id}" }
-            .accordion-inner
-              = "<img src='#{i.picture_url(:thumb)}' class='img-polaroid'>"
+.accordion#accordion2
+  - images.each do |i|
+    .accordion-group
+      .accordion-heading
+        = link_to image_tag(i.picture_url(:thumb)), "#collapse_#{i.id}", 'data-toggle' => "collapse", class: "accordion-toggle", 'data-parent' => "#accordion2"
+      .accordion-body.collapse{ :id => "collapse_#{i.id}" }
+        .accordion-inner
+          = "<img src='#{i.picture_url(:thumb)}' class='img-polaroid'>"
