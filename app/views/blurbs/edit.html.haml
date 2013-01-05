@@ -1,2 +1,5 @@
-%h1 Blurbs#edit
-%p Find me in app/views/blurbs/edit.html.haml
+.page-header
+  %h1 Edit Blurb
+
+= form_for blurb, url: page_blurb_path(blurb.page_id, blurb.id), builder: Formal::Builder do |f|
+  = render partial: "form", locals: { f: f }
