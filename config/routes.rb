@@ -1,4 +1,12 @@
 Clankeithusa::Application.routes.draw do
+  get "blurbs/new"
+
+  get "blurbs/edit"
+
+  get "blurbs/index"
+
+  get "blurbs/show"
+
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
