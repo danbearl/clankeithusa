@@ -6,15 +6,12 @@
       = render partial: "form", locals: { f:f }
 
   .span3
-    %table.table.table-bordered
-      %tbody
-        %tr
-          %th Image
-          %th Tag
-        
-        - images.each do |i|
-          %tr
-            %td
-              = image_tag i.picture_url(:thumb)
-            %td
+    %h4 Images
+    .accordion#accordion2
+      - images.each do |i|
+        .accordion-group
+          .accordion-heading
+            = link_to image_tag(i.picture_url(:thumb)), "#collapse_#{i.id}", 'data-toggle' => "collapse", class: "accordion-toggle", 'data-parent' => "#accordion2"
+          .accordion-body.collapse{ :id => "collapse_#{i.id}" }
+            .accordion-inner
               = "<img src='#{i.picture_url(:thumb)}' class='img-polaroid'>"
