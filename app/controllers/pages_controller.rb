@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   expose(:page, finder: :find_by_slug, finder_parameter: :slug)
   expose(:new_page, model: Page)
   expose(:images) { page.images }
+  expose(:blurbs) { page.blurbs }
   expose(:sub_pages) {page.sub_pages.reorder(:priority) }
 
   def create
