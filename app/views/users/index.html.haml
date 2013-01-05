@@ -1,23 +1,27 @@
-%h1 Listing users
+.page-header
+  %h1 Listing users
 
-%table.table
-  %tr
-    %th Email
-    %th Salt
-    %th Admin
-    %th
-    %th
-    %th
+.row
+  .span12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Email
+          %th Salt
+          %th Admin
+          %th
+          %th
+          %th
+      %tbody
+      - users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.name
+          %td= user.admin
+          %td= link_to t('.show', default: 'show'), user, class: 'btn btn-mini'
+          %td= link_to t('.edit', default: 'Edit'), edit_user_path(user), class: 'btn btn-mini'
+          %td= link_to t('.destroy', default: 'Destroy'), user, method: 'destroy', data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
-  - users.each do |user|
-    %tr
-      %td= user.email
-      %td= user.name
-      %td= user.admin
-      %td= link_to t('.show', default: 'show'), user, class: 'btn btn-mini'
-      %td= link_to t('.edit', default: 'Edit'), edit_user_path(user), class: 'btn btn-mini'
-      %td= link_to t('.destroy', default: 'Destroy'), user, method: 'destroy', data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+    %br
 
-%br
-
-= link_to t('.new', default: 'New User'), new_user_path, class: 'btn btn-primary'
+    = link_to t('.new', default: 'New User'), new_user_path, class: 'btn btn-primary'
