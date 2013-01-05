@@ -8,9 +8,9 @@
     .span9.calendar-event
       %h4= event.title
       %br
-      = "Starts: #{event.starts_at}"
+      = "Starts: #{event.starts_at.to_s(:us)}"
       %br
-      = "Ends: #{event.ends_at}"
+      = "Ends: #{event.ends_at.to_s(:us)}"
       %br
       Description:
       %br
