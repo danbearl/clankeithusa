@@ -1,27 +1,23 @@
 %h1 Listing users
 
-%table
+%table.table
   %tr
     %th Email
     %th Salt
-    %th Crypted password
-    %th Name
     %th Admin
     %th
     %th
     %th
 
-  - @users.each do |user|
+  - users.each do |user|
     %tr
       %td= user.email
-      %td= user.salt
-      %td= user.crypted_password
       %td= user.name
       %td= user.admin
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to t('.show', default: 'show'), user, class: 'btn btn-mini'
+      %td= link_to t('.edit', default: 'Edit'), edit_user_path(user), class: 'btn btn-mini'
+      %td= link_to t('.destroy', default: 'Destroy'), user, method: 'destroy', data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New User', new_user_path
+= link_to t('.new', default: 'New User'), new_user_path, class: 'btn btn-primary'
