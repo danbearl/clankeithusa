@@ -29,6 +29,7 @@
           .navbar-inner
             .container
               %ul.nav
+                %li= link_to 'Home', root_path
                 - sections.each do |p|
                   - if p.public or current_user
                     %li.dropdown
@@ -46,9 +47,7 @@
                   %li
                     = link_to "Log Out", "/log_out"
       .row
-        .span9
+        .span12
           = yield
-        .span3
-          %p Sidebar Stuff
       .footer
           

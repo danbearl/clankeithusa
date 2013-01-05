@@ -1,1 +1,15 @@
-%h1 Clan Keith
+.page-header
+  %h1 Clan Keith
+
+.row
+  .span6
+    %h3 Upcoming Events
+    - events_scoped.each do |event|
+      %p= "Start time: #{event.starts_at.to_s(:long_ordinal)}"
+      %p= "End time: #{event.ends_at.to_s(:long_ordinal)}"
+      %p= event.description
+  .span6
+    - blurbs.each do |blurb|
+      .blurb
+        :markdown
+          #{blurb.body}

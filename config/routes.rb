@@ -13,6 +13,7 @@ Clankeithusa::Application.routes.draw do
   resources :users
   resources :images
   resources :events
+  resources :user_sessions
 
   root :to => 'home#index'
 
