@@ -1,29 +1,31 @@
 %h1 Listing images
 
-%table
+%table.table.table-striped
   %tr
     %th Name
     %th Picture
-    %th Imageable
-    %th Imageable type
+    %th Owning Page
     %th Priority
     %th Description
     %th
     %th
     %th
 
-  - @images.each do |image|
+  - images.each do |image|
     %tr
       %td= image.name
-      %td= image.picture
-      %td= image.imageable_id
-      %td= image.imageable_type
+      %td= image_tag image.picture_url(:thumb)
+      %td
+        - if image.page_id == nil
+          None
+        - else
+          = owner.name
       %td= image.priority
       %td= image.description
-      %td= link_to 'Show', image
-      %td= link_to 'Edit', edit_image_path(image)
-      %td= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to t('.show', default: 'Show'), image, class: 'btn btn-mini'
+      %td= link_to t('.edit', default: 'Edit'), edit_image_path(image), class: 'btn btn-mini'
+      %td= link_to t('.destroy', default: 'Destroy'), image, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Image', new_image_path
+= link_to t('.new', default: 'New Image'), new_image_path, class: 'btn btn-primary'
