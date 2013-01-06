@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   has_many :sub_pages, class_name: "Page",
     foreign_key: "parent_id"
   belongs_to :parent, class_name: "Page"
-  has_many :images, as: :imageable
+  has_many :images
   has_many :blurbs
   
   attr_accessible :body, :name, :slug, :parent_id, :public, :priority

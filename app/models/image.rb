@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :description, :imageable_id, :imageable_type, :name, :picture, :priority
+  attr_accessible :description, :page_id, :name, :picture, :priority
 
   belongs_to :page
 

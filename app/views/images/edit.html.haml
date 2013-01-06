@@ -1,14 +1,12 @@
 %h1 Editing image
 
-= form_for image, url: { action: "create" }, html: { multipart: true }  do |f|
+= form_for image, html: { multipart: true }  do |f|
   - if image.errors.any?
     #error_explanation
       %h2= "#{pluralize(image.errors.count, "error")} prohibited this image from being saved:"
       %ul
         - image.errors.full_messages.each do |msg|
           %li= msg
-  = hidden_field_tag :imageable_id, value: params[:imageable_id]
-  = hidden_field_tag :imageable_type, value: params[:imageable_type]
 
   .field
     = f.label :name
@@ -25,9 +23,9 @@
   .field
     = f.file_field :picture
   .field
-    = f.label :imageable_id
+    = f.label 'Parent Page', :page_id
     - @select_options = Page.all.map {|page| [page.name, page.id] }
-    = f.select(:imageable_id, options_for_select(@select_options, image.imageable_id))
+    = f.select(:page_id, options_for_select(@select_options, image.page_id))
     
   .actions
     = f.submit 'Save'

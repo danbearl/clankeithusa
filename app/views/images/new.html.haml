@@ -7,8 +7,6 @@
       %ul
         - image.errors.full_messages.each do |msg|
           %li= msg
-  = f.hidden_field :imageable_id, value: @imageable_id
-  = f.hidden_field :imageable_type, value: @imageable_type
 
   .field
     = f.label :name

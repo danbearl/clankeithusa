@@ -4,15 +4,9 @@ class ImagesController < ApplicationController
 
   expose(:images)
   expose(:image) 
-  expose(:owner) { image.imageable }
-
-  def new
-    @imageable_id = params[:imageable_id]
-    @imageable_type = params[:imageable_type]
-  end
+  expose(:owner) { Page.find(image.page_id) }
 
   def create
-
     if image.save
       redirect_to slug_path(owner.slug), notice: "Image successfully created."
     else
