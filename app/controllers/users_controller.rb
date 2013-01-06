@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   
   def update
       if user.save
-        redirect_to root_path, notice: 'User was successfully updated.'
+        redirect_to users_path, notice: 'User was successfully updated.'
       else
         render action: "edit"
       end
@@ -25,6 +25,6 @@ class UsersController < ApplicationController
 
   def destroy
     user.destroy
-    redirect_to root_path, notice: 'User successfully deleted.'
+    redirect_to users_path, notice: 'User successfully deleted.'
   end
 end

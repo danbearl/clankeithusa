@@ -2,14 +2,14 @@
 
 %p
   %b Email:
-  = @user.email
+  = user.email
 %p
   %b Name:
-  = @user.name
+  = user.name
 %p
   %b Admin:
-  = @user.admin
+  = user.admin
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to 'Edit', edit_user_path(user)
 \|
 = link_to 'Back', users_path

@@ -20,7 +20,7 @@
           %td= user.admin
           %td= link_to t('.show', default: 'show'), user, class: 'btn btn-mini'
           %td= link_to t('.edit', default: 'Edit'), edit_user_path(user), class: 'btn btn-mini'
-          %td= link_to t('.destroy', default: 'Destroy'), user, method: 'destroy', data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+          %td= link_to t('.destroy', default: 'Destroy'), user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
     %br
 
