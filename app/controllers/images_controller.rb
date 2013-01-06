@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
 
   def update
     if image.save
-      redirect_to owner, notice: "Image successfully updated."
+      redirect_to slug_path(owner.slug), notice: "Image successfully updated."
     else
       render "edit"
     end
