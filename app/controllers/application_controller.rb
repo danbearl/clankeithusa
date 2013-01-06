@@ -9,7 +9,12 @@ class ApplicationController < ActionController::Base
     pages.where(:parent_id => 0).reorder(:priority)
   end
   expose(:page_slugs ) { Page.select(:slug).map(&:slug) }
-  expose(:site_wide_announcements) { Announcement.where(site_wide: true) }
+  expose(:site_wide_announcements) do
+    Announcement.where(
+      live: true,
+      site_wide: true
+    )
+  end
 
   private
 

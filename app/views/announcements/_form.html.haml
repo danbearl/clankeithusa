@@ -18,6 +18,11 @@
   .controls
     = f.check_box :site_wide
 
+.control-group
+  = f.label :live
+  .controls
+    = f.check_box :live
+
 .form-actions
   = f.submit nil, class: 'btn btn-primary'
   = link_to t('.cancel', default: "Cancel"), announcements_path, class: 'btn'

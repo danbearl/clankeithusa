@@ -10,6 +10,7 @@ class HomeController < ApplicationController
 
   expose(:announcements) do
     Announcement.where(
+      live: true,
       front_page: false,
       site_wide: false
     )
@@ -17,6 +18,7 @@ class HomeController < ApplicationController
 
   expose(:front_page_announcements) do
     Announcement.where(
+      live: true,
       front_page: true,
       site_wide: false
     )

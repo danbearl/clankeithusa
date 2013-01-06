@@ -12,6 +12,8 @@
           %th Updated On
           %th Front Page
           %th Site Wide
+          %th Live
+          %th
           %th
           %th
       %tbody
@@ -23,6 +25,7 @@
           %td= announcement.updated_at.to_s(:long)
           %td= announcement.front_page
           %td= announcement.site_wide
+          %td= announcement.live
           %td= link_to t('.show', default: 'show'), announcement, class: 'btn btn-mini'
           %td= link_to t('.edit', default: 'Edit'), edit_announcement_path(announcement), class: 'btn btn-mini'
           %td= link_to t('.destroy', default: 'Destroy'), announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
