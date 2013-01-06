@@ -1,0 +1,23 @@
+.control-group
+  = f.label :name
+  .controls
+    = f.text_field :name
+
+.control-group
+  = f.label :body
+  .controls
+    = f.text_area :body
+
+.control-group
+  = f.label :front_page
+  .controls
+    = f.check_box :front_page
+
+.control-group
+  = f.label :site_wide
+  .controls
+    = f.check_box :site_wide
+
+.form-actions
+  = f.submit nil, class: 'btn btn-primary'
+  = link_to t('.cancel', default: "Cancel"), announcements_path, class: 'btn'
