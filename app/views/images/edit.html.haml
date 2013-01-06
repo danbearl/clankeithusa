@@ -26,7 +26,7 @@
     = f.file_field :picture
   .field
     = f.label :imageable_id
-    - @select_options = Pages.all.map {|page| [page.name, page.id] }
+    - @select_options = Page.all.map {|page| [page.name, page.id] }
     = f.select(:imageable_id, options_for_select(@select_options, image.imageable_id))
     
   .actions

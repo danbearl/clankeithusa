@@ -27,5 +27,6 @@
           .accordion-inner
 
             = image_tag(i.picture_url(:thumb))
+            = link_to t('.edit', default: "Edit"), edit_image_path(i), class: 'btn'
             %br
             = "<img src='#{i.picture_url(:thumb)}' class='img-polaroid'>"
