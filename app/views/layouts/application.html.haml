@@ -14,40 +14,41 @@
   %body
     .container
       .row
-        .span12
-          #banner
+        .span12#banner
       - if user_is_admin?
         .row
-          .navbar.nav-admin
-            .navbar-inner
-              %ul.nav
-                %li Admin Tools:
-                %li= link_to "Pages", pages_path
-                %li= link_to "Users", users_path
-                %li= link_to "Announcements", announcements_path
-                %li= link_to "Events", events_path
+          .span12
+            .navbar.nav-admin
+              .navbar-inner
+                %ul.nav
+                  %li Admin Tools:
+                  %li= link_to "Pages", pages_path
+                  %li= link_to "Users", users_path
+                  %li= link_to "Announcements", announcements_path
+                  %li= link_to "Events", events_path
       .row
-        .navbar.nav-fixed-top
-          .navbar-inner
-            .container
-              %ul.nav
-                %li= link_to 'Home', root_path
-                - sections.each do |p|
-                  - if p.public or current_user
-                    %li.dropdown
-                      %a(href="#" class="dropdown-toggle" data-toggle="dropdown")= p.name
-                      %ul.dropdown-menu
-                        - p.sub_pages.reorder(:priority).each do |page|
-                          - if page.public or current_user
-                            %li= link_to(page.name, slug_path(page.slug))
-                %li
-                  = link_to 'Calendar', events_path
-                - if !current_user
+        .span12
+          .navbar.nav-fixed-top
+            .navbar-inner
+              .container
+                %ul.nav
+                  %li= link_to 'Home', root_path
+                  - sections.each do |p|
+                    - if p.public or current_user
+                      %li.dropdown
+                        %a(href="#" class="dropdown-toggle" data-toggle="dropdown")= p.name
+                        %ul.dropdown-menu
+                          - p.sub_pages.reorder(:priority).each do |page|
+                            - if page.public or current_user
+                              %li= link_to(page.name, slug_path(page.slug))
                   %li
-                    = link_to "Log In", "/log_in"
-                - else
-                  %li
-                    = link_to "Log Out", "/log_out"
+                    = link_to 'Calendar', events_path
+                  - if !current_user
+                    %li
+                      = link_to "Log In", "/log_in"
+                  - else
+                    %li
+                      = link_to "Log Out", "/log_out"
       .row
         .span12
           - flash.each do |name, msg|
@@ -62,6 +63,7 @@
               %a.close{"data-dismiss" => "alert"} &#215
               %p= announcement.body
 
+      .row
         .span12
           = yield
       .footer

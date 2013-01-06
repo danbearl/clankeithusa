@@ -1,12 +1,13 @@
 - if sub_pages.length > 0
   .row
-    .navbar.sub_nav
-      .navbar-inner
-        .container
-          %ul.nav
-            - sub_pages.each do |p|
-              - if p.public or current_user
-                %li= link_to(p.name, slug_path(p.slug))
+    .span12
+      .navbar.sub_nav
+        .navbar-inner
+          .container
+            %ul.nav
+              - sub_pages.each do |p|
+                - if p.public or current_user
+                  %li= link_to(p.name, slug_path(p.slug))
 
 .page-header
   %h1=t '.title', :default => page.name
