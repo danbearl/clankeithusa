@@ -1,5 +1,5 @@
 class AnnouncementsController < ApplicationController
-  before_filter :require_admin, :except [:show]
+  skip_before_filter :require_admin, only: :show
 
   expose(:announcements)
   expose(:announcement)

@@ -1,2 +1,28 @@
-%h1 Announcements#index
-%p Find me in app/views/announcements/index.html.haml
+.page-header
+  %h1 Listing announcements
+
+.row
+  .span12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+          %th Message
+          %th Created On
+          %th Updated On
+          %th
+          %th
+      %tbody
+      - announcements.each do |announcement|
+        %tr
+          %td= announcement.name
+          %td= announcement.body
+          %td= announcement.created_at.to_s(:long)
+          %td= announcement.updated_at.to_s(:long)
+          %td= link_to t('.show', default: 'show'), announcement, class: 'btn btn-mini'
+          %td= link_to t('.edit', default: 'Edit'), edit_announcement_path(announcement), class: 'btn btn-mini'
+          %td= link_to t('.destroy', default: 'Destroy'), announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+
+    %br
+
+    = link_to t('.new', default: 'New Announcement'), new_announcement_path, class: 'btn btn-primary'

@@ -1,20 +1,4 @@
 Clankeithusa::Application.routes.draw do
-  get "announcements/new"
-
-  get "announcements/edit"
-
-  get "announcements/show"
-
-  get "announcements/index"
-
-  get "blurbs/new"
-
-  get "blurbs/edit"
-
-  get "blurbs/index"
-
-  get "blurbs/show"
-
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
@@ -22,6 +6,7 @@ Clankeithusa::Application.routes.draw do
   resources :images
   resources :events
   resources :user_sessions
+  resources :announcements
 
   root :to => 'home#index'
 
