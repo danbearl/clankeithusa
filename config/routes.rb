@@ -1,4 +1,12 @@
 Clankeithusa::Application.routes.draw do
+  get "announcements/new"
+
+  get "announcements/edit"
+
+  get "announcements/show"
+
+  get "announcements/index"
+
   get "blurbs/new"
 
   get "blurbs/edit"
