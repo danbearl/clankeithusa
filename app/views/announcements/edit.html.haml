@@ -1,2 +1,7 @@
-%h1 Announcements#edit
-%p Find me in app/views/announcements/edit.html.haml
+.page-header
+  %h1 Edit Announcement
+
+= form_for announcement, url: announcement_path(announcement), builder: Formal::Builder do |f|
+  = render partial: "form", locals: { f: f}
+
+= link_to 'Back', announcements_path

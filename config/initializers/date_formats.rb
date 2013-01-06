@@ -1,1 +1,1 @@
-Time::DATE_FORMATS[:us] = "%m/%e/%y %H:%M"
+Time::DATE_FORMATS[:us] = "%m/%e/%Y"

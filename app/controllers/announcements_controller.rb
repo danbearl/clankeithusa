@@ -23,7 +23,7 @@ class AnnouncementsController < ApplicationController
 
   def destroy
     announcement.destroy
-    redirect_to :root, message: "#{announcement.name} was deleted."
+    redirect_to announcements_path, notice: "Announcement #{announcement.name} was deleted."
   end
 
 end

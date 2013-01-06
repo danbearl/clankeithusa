@@ -1,2 +1,7 @@
-%h1 Announcements#new
-%p Find me in app/views/announcements/new.html.haml
+.page-header
+  %h1 New Announcement
+
+= form_for announcement, builder: Formal::Builder do |f|
+  = render partial: "form", locals: { f: f}
+
+= link_to 'Back', announcements_path

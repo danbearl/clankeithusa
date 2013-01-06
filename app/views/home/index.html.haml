@@ -2,13 +2,25 @@
   %h1 Clan Keith
 
 .row
-  .span6
+  .span4
     %h3 Upcoming Events
     - events_scoped.each do |event|
-      %p= "Start time: #{event.starts_at.to_s(:long_ordinal)}"
-      %p= "End time: #{event.ends_at.to_s(:long_ordinal)}"
-      %p= event.description
-  .span6
+      .calendar-event
+        %b= event.title
+        %br
+        = event.starts_at.to_s(:us)
+        :markdown
+          #{event.description}
+
+  .span4.announcements
+    %h3 Announcements
+    - announcements.each do |announcement|
+      .announcement
+        = announcement.body
+        %br
+
+  .span4
+    %h3 Additional Resources
     - blurbs.each do |blurb|
       .blurb
         :markdown

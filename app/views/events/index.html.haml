@@ -8,13 +8,10 @@
     .span9.calendar-event
       %h4= event.title
       %br
-      = "Starts: #{event.starts_at.to_s(:us)}"
+      = "#{event.starts_at.to_s(:us)} - #{event.ends_at.to_s(:us)}"
       %br
-      = "Ends: #{event.ends_at.to_s(:us)}"
-      %br
-      Description:
-      %br
-      = event.description
+      :markdown
+        #{event.description}
       - if user_is_admin?
         %br
         = link_to t('.edit', default: t("helpers.links.edit")), edit_event_path(event), class: 'btn btn-mini'
