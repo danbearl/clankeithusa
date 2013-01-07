@@ -15,7 +15,7 @@
       %tr
         %td= link_to page.id, slug_path(page.slug)
         %td= page.name
-        - if page.parent_id != 0
+        - if page.parent_id !=0 and page.parent_id != nil
           %td= page.parent.name
         - else
           %td None
