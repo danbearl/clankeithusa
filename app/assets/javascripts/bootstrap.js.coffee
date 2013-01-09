@@ -6,3 +6,8 @@ jQuery ->
   $("a[rel=popover]").popover({content: $('.accordion') })
   $(".tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
+  $(".datepicker").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'yy-mm-dd'
+  })
