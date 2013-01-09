@@ -78,6 +78,7 @@ GEM
     decent_exposure (2.0.1)
     diff-lcs (1.1.3)
     dirty (0.0.7)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     excon (0.16.10)
     execjs (1.4.0)
@@ -230,6 +231,7 @@ DEPENDENCIES
   database_cleaner
   decent_exposure
   dirty
+  dynamic_form
   fabrication
   fog
   formal
