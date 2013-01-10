@@ -4,11 +4,11 @@ class Event < ActiveRecord::Base
   validate :must_not_end_before_it_starts
   validates_presence_of :starts_at, :ends_at
 
-  scope :before, lambda {|end_time| {conditions: ["ends_at < ?", Event.format_date(end_time)] }}
-  scope :after, lambda {|start_time| {conditions: ["starts_at > ?", Event.format_date(start_time)] }}
+  scope :before, lambda {|end_time| {conditions: ["ends_at <= ?", Event.format_date(end_time)] }}
+  scope :after, lambda {|start_time| {conditions: ["starts_at >= ?", Event.format_date(start_time)] }}
 
   def self.format_date(date_time)
-    Time.at(date_time.to_i).to_formatted_s(:db)
+    date_time.to_formatted_s(:db)
   end
 
   def self.param_to_date(params)

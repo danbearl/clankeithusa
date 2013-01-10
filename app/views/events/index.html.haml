@@ -3,28 +3,33 @@
 - if user_is_admin?
   = link_to t('.new', default: t("helpers.links.new")), new_event_path, class: 'btn btn-primary'
 
-- events_scoped.each do |event|
-  .row
-    .span9.calendar-event
-      %h4= event.title
-      %br
-      = "#{event.starts_at.to_s(:long)} - #{event.ends_at.to_s(:long)}"
-      %br
-      :markdown
-        #{event.description}
-      - if user_is_admin?
+- @grouped_events.each do |year, months|
+  - months.each do |month, events|
+    %h3= "#{@months[month-1]}, #{year}"
+    %br
+    - events.each do |event|
+      .calendar-event
+        %h4= event.title
         %br
-        = link_to t('.edit', default: t("helpers.links.edit")), edit_event_path(event), class: 'btn btn-mini'
-        = link_to t('.destroy', default: t("helpers.links.destroy")), event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+        = "#{event.starts_at.to_s(:long)} - #{event.ends_at.to_s(:long)}"
+        %br
+        :markdown
+          #{event.description}
+        - if user_is_admin?
+          %br
+          = link_to t('.edit', default: t("helpers.links.edit")), edit_event_path(event), class: 'btn btn-mini'
+          = link_to t('.destroy', default: t("helpers.links.destroy")), event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
-= form_tag("/events", method: "get") do
-  .control-group
-    = label_tag :start, "Start Date:"
-    .controls
-      = select_date params[:start], prefix: :start_date, class: "span1"
-  .control-group
-    = label_tag :end, "End Date:"
-    .controls
-      = select_date params[:end], prefix: :end_date, class: "span1"
+= form_tag("/events", method: "get", class: "form-horizontal") do
+  .control-row
+    .control-group
+      = label_tag :start, "Start Date:", class: "control-label"
+      .controls 
+        = text_field_tag :start, params[:start], class: "datepicker span2"
+    .control-group
+      = label_tag :end, "End Date:", class: "control-label"
+      .controls
+        = text_field_tag :end, params[:end], class: "datepicker span2"
   .form-actions
     = submit_tag "Filter Events"
+

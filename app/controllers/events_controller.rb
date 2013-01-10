@@ -5,29 +5,29 @@ class EventsController < ApplicationController
   expose(:events)
   expose(:events_scoped) do |events|
     events = Event.scoped
-    events = events.after(params[:start]) if (params[:start])
-    events = events.before(params[:end]) if (params[:end])
+    events = events.after(@start_date)
+    events = events.before(@end_date)
+    events.reorder(:starts_at)
   end
   expose(:event)
   expose(:new_event, model: Event)
 
   def index
-
-    if params[:start_date]
-      params[:start] = Event.param_to_date(params[:start_date])
+    begin
+      @start_date = Date.parse(params[:start])
+    rescue
+      @start_date = Date.new(Date.today.year, Date.today.month, 1)
     end
 
-    if params[:end_date]
-      params[:end] = Event.param_to_date(params[:end_date])
+    begin
+      @end_date = Date.parse(params[:end])
+    rescue
+      @end_date = Date.new(Date.today.year, Date.today.month, 31)
     end
 
-    if !params[:start]
-      params[:start] = Time.utc(Time.now.year, Time.now.month, 1)
-    end
+    @grouped_events = group_events(events_scoped)
 
-    if !params[:end]
-      params[:end] = Time.utc(Time.now.year, Time.now.month, 31)
-    end
+    @months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   end
 
@@ -50,6 +50,25 @@ class EventsController < ApplicationController
   def destroy
     event.destroy
     redirect_to events_path, notice: "Event successfully deleted."
+  end
+
+  def group_events(events)
+    years = {}
+
+    events.each do |event|
+      if !years.has_key?(event.starts_at.year)
+        years[event.starts_at.year] = {}
+      end
+    end
+
+    events.each do |event|
+      if !years[event.starts_at.year].has_key?(event.starts_at.month)
+        years[event.starts_at.year][event.starts_at.month] = []
+      end
+      years[event.starts_at.year][event.starts_at.month] << event
+    end
+
+    return years
   end
 
 end
