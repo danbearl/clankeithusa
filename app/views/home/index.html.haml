@@ -16,7 +16,9 @@
     %h3 Announcements
     - announcements.each do |announcement|
       .announcement
-        = announcement.body
+        = announcement.name
+        :markdown
+          #{announcement.body}
         %br
 
   .span4
