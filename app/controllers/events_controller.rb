@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     begin
       @end_date = Date.parse(params[:end])
     rescue
-      @end_date = Date.new(Date.today.year, Date.today.month, 31)
+      @end_date = Date.new(@start_date.year + 1, @start_date.month, @start_date.day)
     end
 
     @grouped_events = group_events(events_scoped)
