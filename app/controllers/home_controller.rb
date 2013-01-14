@@ -24,4 +24,6 @@ class HomeController < ApplicationController
     )
   end
 
+  expose(:images)
+
 end
