@@ -14,15 +14,6 @@
 
       %a(href="#imageCarousel" class="carousel-control left" data-slide="prev") &lsaquo;
       %a(href="#imageCarousel" class="carousel-control right" data-slide="next") &rsaquo;
-  .span3
-    %h3 Upcoming Events
-    - events_scoped.each do |event|
-      .calendar-event
-        %b= event.title
-        %br
-        = event.starts_at.to_s(:us)
-        :markdown
-          #{event.description}
 
   .span3.announcements
     %h3 Announcements
@@ -32,10 +23,20 @@
         :markdown
           #{announcement.body}
         %br
-.row
-  .span4
+
+  .span3
     %h3 Additional Resources
     - blurbs.each do |blurb|
       .blurb
         :markdown
           #{blurb.body}
+.row
+  .span9
+    %h3 Upcoming Events
+    - events_scoped.each do |event|
+      .calendar-event
+        %b= event.title
+        %br
+        = event.starts_at.to_s(:us)
+        :markdown
+          #{event.description}
