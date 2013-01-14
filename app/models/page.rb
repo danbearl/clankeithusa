@@ -15,9 +15,16 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of :name
 
   before_save :update_slug
+  before_destroy do
+    images = Image.where(page_id: self.id)
+
+    images.each do |image|
+      image.page_id = nil
+      image.save
+    end
+  end
 
   def update_slug
    self.slug = name.parameterize
   end
-
 end

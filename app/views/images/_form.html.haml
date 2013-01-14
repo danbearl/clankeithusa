@@ -5,8 +5,7 @@
       %ul
         - image.errors.full_messages.each do |msg|
           %li= msg
-  = hidden_field_tag :imageable_id, value: params[:imageable_id]
-  = hidden_field_tag :imageable_type, value: params[:imageable_type]
+  = hidden_field_tag :page_id, value: params[:page_id]
 
   .field
     = f.label :name

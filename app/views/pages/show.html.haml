@@ -23,7 +23,7 @@
         = link_to t('.back', :default => t("helpers.links.back")), pages_path, :class => 'btn'
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_slug_path(page.slug, parent_id: page.parent_id), :class => 'btn'
         = link_to t('.destroy', :default => t("helpers.links.destroy")), slug_path(page.slug), :method => "destroy", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
-        = link_to t('.new', default: t("Add Image")), new_image_path(imageable_id: page.id, imageable_type: Page), class: 'btn btn-primary'
+        = link_to t('.new', default: t("Add Image")), new_image_path(page_id: page.id, imageable_type: Page), class: 'btn btn-primary'
         = link_to t('.new', default: t("Add Blurb")), new_page_blurb_path(page.id), class: 'btn btn-primary'
 
   .span3.sidebar
