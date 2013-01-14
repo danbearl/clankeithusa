@@ -1,8 +1,5 @@
-.page-header
-  %h1 Clan Keith
-
 .row
-  .span8
+  .span6
     #imageCarousel.carousel.slide
       .carousel-inner
         - images.each do |image|
@@ -10,8 +7,7 @@
             = image_tag image.picture_url
       %a(href="#imageCarousel" class="carousel-control left" data-slide="prev") &lsaquo;
       %a(href="#imageCarousel" class="carousel-control right" data-slide="next") &rsaquo;
-.row
-  .span4
+  .span3
     %h3 Upcoming Events
     - events_scoped.each do |event|
       .calendar-event
@@ -21,7 +17,7 @@
         :markdown
           #{event.description}
 
-  .span4.announcements
+  .span3.announcements
     %h3 Announcements
     - announcements.each do |announcement|
       .announcement
@@ -29,7 +25,7 @@
         :markdown
           #{announcement.body}
         %br
-
+.row
   .span4
     %h3 Additional Resources
     - blurbs.each do |blurb|

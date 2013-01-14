@@ -16,10 +16,10 @@
       %td= image.name
       %td= image_tag image.picture_url(:thumb)
       %td
-        - if image.page_id == nil
+        - if image.page_id == nil or image.page_id == 0
           None
         - else
-          = owner.name
+          = Page.find(image.page_id).name
       %td= image.priority
       %td= image.description
       %td= link_to t('.show', default: 'Show'), image, class: 'btn btn-mini'

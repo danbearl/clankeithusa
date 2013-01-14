@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110230737) do
+ActiveRecord::Schema.define(:version => 20130114194731) do
 
   create_table "announcements", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20130110230737) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "page_id"
+    t.boolean  "featured"
   end
 
   create_table "pages", :force => true do |t|

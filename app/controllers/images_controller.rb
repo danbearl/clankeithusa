@@ -24,6 +24,6 @@ class ImagesController < ApplicationController
 
   def destroy
     image.destroy
-    redirect_to owner, notice: "Image successfully deleted."
+    redirect_to images_path, notice: "Image successfully deleted."
   end
 end
