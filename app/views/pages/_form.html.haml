@@ -18,8 +18,9 @@
 .control-group
   = f.label :parent_id
   .controls
-    - @pages_array = Page.all.map {|page| [page.name, page.id]}
+    - @pages_array = []
     - @pages_array << ["None", 0]
+    - @pages_array.concat Page.all.map {|page| [page.name, page.id]}
     = f.select(:parent_id, options_for_select(@pages_array, page.parent_id))
 .form-actions
   = f.submit nil, :class => 'btn btn-primary'
