@@ -2,9 +2,16 @@
   .span6
     #imageCarousel.carousel.slide
       .carousel-inner
+        - c=0
         - images.each do |image|
-          .item
-            = image_tag image.picture_url
+          -if c == 0
+            .active.item
+              = image_tag image.picture_url
+          -else
+            .item
+              = image_tag image.picture_url
+          - c += 1
+
       %a(href="#imageCarousel" class="carousel-control left" data-slide="prev") &lsaquo;
       %a(href="#imageCarousel" class="carousel-control right" data-slide="next") &rsaquo;
   .span3

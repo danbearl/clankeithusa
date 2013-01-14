@@ -24,6 +24,6 @@ class HomeController < ApplicationController
     )
   end
 
-  expose(:images)
+  expose(:images) {Image.where(featured: true)}
 
 end
