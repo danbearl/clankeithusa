@@ -1,4 +1,12 @@
 Clankeithusa::Application.routes.draw do
+  get "documents/new"
+
+  get "documents/edit"
+
+  get "documents/show"
+
+  get "documents/index"
+
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
