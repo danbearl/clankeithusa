@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116192443) do
+ActiveRecord::Schema.define(:version => 20130116200838) do
 
   create_table "announcements", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130116192443) do
     t.integer  "page_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "file"
   end
 
   create_table "events", :force => true do |t|
