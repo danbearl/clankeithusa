@@ -17,9 +17,9 @@ class DocumentUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :cover
-
     process :resize_to_limit => [200, 200]
+    process :convert => 'jpg'
+    process :cover
     process :convert => 'jpg'
   end
 
