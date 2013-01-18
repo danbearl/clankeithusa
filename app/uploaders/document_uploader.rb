@@ -21,6 +21,9 @@ class DocumentUploader < CarrierWave::Uploader::Base
     process :convert => 'jpg'
     process :cover
     process :convert => 'jpg'
+    def full_filename (for_file = model.logo.file)
+      super.chomp(File.extname(super)) + '.jpg'
+    end
   end
 
   def extension_white_list
