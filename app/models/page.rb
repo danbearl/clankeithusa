@@ -5,6 +5,7 @@ class Page < ActiveRecord::Base
   belongs_to :parent, class_name: "Page"
   has_many :images
   has_many :blurbs
+  has_many :documents
   
   attr_accessible :body, :name, :slug, :parent_id, :public, :priority
 
