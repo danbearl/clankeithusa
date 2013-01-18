@@ -15,12 +15,14 @@ Clankeithusa::Application.routes.draw do
   resources :events
   resources :user_sessions
   resources :announcements
+  resources :documents
 
   root :to => 'home#index'
 
   resources :pages, only: [:new, :create, :index] do
     resources :images
     resources :blurbs
+    resources :documents
   end
 
   #keep these at the bottom of your file. They should be the last routes.
