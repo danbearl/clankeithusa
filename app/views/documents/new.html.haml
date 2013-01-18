@@ -1,2 +1,28 @@
-%h1 Documents#new
-%p Find me in app/views/documents/new.html.haml
+%h1 New Document
+
+= form_for document, url: { action: "create" }, html: {multipart: true } do |f|
+  - if document.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(document.errors.count, "error")} prohibited this document from being saved:"
+      %ul
+        - document.errors.full_messages.each do |msg|
+          %li= msg
+  = hidden_field_tag :page_id, value: params[:page_id]
+
+  .control-group
+    = f.label :name
+    .controls
+      = f.text_field :name
+
+  .control-group
+    = f.label :description
+    .controls
+      = f.text_area :description
+
+  .control-group
+    = f.file_field :file
+
+  .form-actions
+    = f.submit 'Save'
+
+= link_to 'Back', images_path
