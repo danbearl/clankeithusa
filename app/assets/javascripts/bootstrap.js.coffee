@@ -11,3 +11,7 @@ jQuery ->
     changeYear: true,
     dateFormat: 'yy-mm-dd'
   })
+  $('#imageCarousel').carousel()
+  $('#announcementsCarousel').carousel(
+    interval: 10000
+  )

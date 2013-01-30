@@ -1,6 +1,6 @@
 .row
   .span6
-    #imageCarousel.carousel.slide
+    #imageCarousel.carousel.slide(data-interval="5000")
       .carousel-inner
         - c=0
         - images.each do |image|
@@ -14,28 +14,32 @@
 
       %a(href="#imageCarousel" class="carousel-control left" data-slide="prev") &lsaquo;
       %a(href="#imageCarousel" class="carousel-control right" data-slide="next") &rsaquo;
-    .span5
-      %h3 Upcoming Events
-      - events_scoped.each do |event|
-        .calendar-event
-          %b= event.title
-          %br
-          = event.starts_at.to_s(:us)
-          :markdown
-            #{event.description}
 
   .span3.announcements
     %h3 Announcements
-    - announcements.each do |announcement|
-      .announcement
-        %h4= announcement.name
-        :markdown
-          #{announcement.body}
-        %br
-
+    #announcementsCarousel.carousel.slide
+      .carousel-inner
+        - c=0
+        - announcements.each do |announcement|
+          - if c == 0
+            .active.item
+              %h4= announcement.name
+              :markdown
+                #{announcement.body}
+          - else
+            .item
+              %h4= announcement.name
+              :markdown
+                #{announcement.body}
+          - c += 1
+      -# %a(href="#announcementsCarousel" class="carousel-control left" data-slide="prev") &lsaquo;
+      -# %a(href="#announcementsCarousel" class="carousel-control right" data-slide="next") &rsaquo;
   .span3
-    %h3 Additional Resources
-    - blurbs.each do |blurb|
-      .blurb
+    %h3 Upcoming Events
+    - events_scoped.each do |event|
+      .calendar-event
+        %b= event.title
+        %br
+        = event.starts_at.to_s(:us)
         :markdown
-          #{blurb.body}
+          #{event.description}
