@@ -132,6 +132,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-ssh (2.6.2)
     nokogiri (1.5.6)
+    nyan-cat-formatter (0.2.0)
     pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.10)
@@ -240,6 +241,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   libv8
+  nyan-cat-formatter
   pg
   pry
   rails (= 3.2.11)

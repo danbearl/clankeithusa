@@ -39,4 +39,5 @@ group :test do
   gem 'dirty'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'nyan-cat-formatter'
 end
