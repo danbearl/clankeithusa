@@ -16,7 +16,7 @@ describe Order do
     order.processed.should eq(true)
     order.notes.should eq("Draw a picture on the package.")
     order.products.should eq("hat@product,5.99@price,green@color,1@qty&shirt@product,15.99@price,red@color,xl@size")
-    order.shipped.should eq("false")
+    order.shipped.should eq(false)
     order.stripe_card_token.should eq("12345")
   end
 
@@ -41,12 +41,12 @@ describe Order do
   it "packs items hash into a string" do
     order = Fabricate(:order)
 
-    order.pack_products([{product: "hat", price: 5.99, color: "green", qty: 1},{product: "shirt", price: 15.99, color: "red", size: "xl"}]).should eq("hat@product,5.99@price,green@color,1@qty&shirt@product,15.99@price,red@color,xl@size")
+    Order.pack_products([{product: "hat", price: 5.99, color: "green", qty: 1},{product: "shirt", price: 15.99, color: "red", size: "xl"}]).should eq("hat@product,5.99@price,green@color,1@qty&shirt@product,15.99@price,red@color,xl@size")
   end
 
   it "unpacks items string into hash" do
     order = Fabricate(:order)
 
-    order.unpack_products(order.products).should eq([{product: "hat", price: 5.99, color: "green", qty: 1},{product: "shirt", price: 15.99, color: "red", size: "xl"}])
+    Order.unpack_products(order.products).should eq([{product: "hat", price: "5.99", color: "green", qty: "1"},{product: "shirt", price: "15.99", color: "red", size: "xl"}])
   end
 end
