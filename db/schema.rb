@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204205950) do
+ActiveRecord::Schema.define(:version => 20130204232257) do
 
   create_table "announcements", :force => true do |t|
     t.string   "name"
@@ -59,6 +59,24 @@ ActiveRecord::Schema.define(:version => 20130204205950) do
     t.datetime "updated_at",  :null => false
     t.integer  "page_id"
     t.boolean  "featured"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "email"
+    t.string   "customer_first_name"
+    t.string   "customer_last_name"
+    t.string   "address_street_1"
+    t.string   "address_street_2"
+    t.string   "address_city"
+    t.string   "address_state"
+    t.string   "address_zip"
+    t.boolean  "processed"
+    t.boolean  "shipped"
+    t.text     "notes"
+    t.text     "products"
+    t.string   "stripe_card_token"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "pages", :force => true do |t|
