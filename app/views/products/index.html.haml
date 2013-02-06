@@ -14,7 +14,7 @@
       %tr
         %td= link_to product.name, product
         %td= product.description
-        %td= product.formatted_price
+        %td= number_to_currency(product.price)
         - if current_user
           %td
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(product), :class => 'btn btn-mini'

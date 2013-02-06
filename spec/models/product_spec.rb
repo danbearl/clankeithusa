@@ -35,9 +35,4 @@ describe Product do
     product_without_sizes.list_sizes.should eq(false)
   end
 
-  it "has an image" do
-    product = Fabricate(:product, image: "img001.jpg")
-
-    product.image.should eq("img001.jpg")
-  end
 end

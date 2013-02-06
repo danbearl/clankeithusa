@@ -18,4 +18,5 @@ class Product < ActiveRecord::Base
 
     self.sizes.gsub(" ","").split(",")
   end
+
 end
