@@ -1,4 +1,12 @@
 Clankeithusa::Application.routes.draw do
+  get "products/new"
+
+  get "products/edit"
+
+  get "products/show"
+
+  get "products/index"
+
   get "documents/new"
 
   get "documents/edit"
@@ -16,6 +24,7 @@ Clankeithusa::Application.routes.draw do
   resources :user_sessions
   resources :announcements
   resources :documents
+  resources :products
 
   root :to => 'home#index'
 
