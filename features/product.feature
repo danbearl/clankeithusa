@@ -16,9 +16,8 @@ Feature: Product
       | product_name        | hat                          |
       | product_description | A thing to wear on your head |
       | product_price       | 5.95                         |
-      | product_size        | xs,s,m,l,xl                  |
+      | product_sizes       | xs,s,m,l,xl                  |
       | product_colors      | red,green,blue               |
-      | product_image       | image.jpg                    |
     And I press "Create Product"
     Then I should see "Product successfully created."
     And I should see "Products"
