@@ -42,6 +42,6 @@ Feature: Product
       | name        | hat                          |
       | description | A thing to wear on your head |
       | price       | 5.95                         |
-    And I am on that product's page
+    And I am on that product's page.
     When I follow "Delete"
     Then I should see "Page successfully deleted."
