@@ -10,7 +10,7 @@ Feature: Pages
 		And that user is logged in.
 
 	Scenario: Create New Page
-		Given I am on the home page.
+		Given I am on the pages index.
 		When I follow "New Page"
 		And I fill in the following:
 			| page_name | about                   |

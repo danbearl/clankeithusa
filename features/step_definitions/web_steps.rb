@@ -40,6 +40,10 @@ Given /^I am on the home page\.$/ do
   visit root_path
 end
 
+Given /^I am on the pages index\.$/ do
+  visit pages_path
+end
+
 # Whens
 When /^I follow "(.*?)"$/ do |link|
   click_link(link)

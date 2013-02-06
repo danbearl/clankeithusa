@@ -11,8 +11,8 @@ Feature: Users
 	Scenario: User Logs In
 		Given I am on the log in page.
 		When I fill in the following:
-			| user_e-mail   | dan@example.com |
-			| user_password | pass            |
+			| email    | dan@example.com |
+			| password | pass            |
 
 		And I press "Log In"
 		Then I should see "Logged in successfully."
