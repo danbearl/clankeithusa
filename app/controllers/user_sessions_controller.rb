@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if sign_in(params[:email], params[:password])
-      redirect_back_or_to(root_path)
+      redirect_to root_path, notice: "Logged in successfully."
     else
       render :new
     end
