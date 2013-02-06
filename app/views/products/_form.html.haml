@@ -1,0 +1,32 @@
+.control-group
+  = f.label :name
+  .controls
+    = f.text_field :name
+
+.control-group
+  = f.label :decription
+  .controls
+    = f.text_area :description
+
+.control-group
+  = f.label :price
+  .controls
+    = f.number_field :price
+
+.control-group
+  %p List sizes separated by commas (xs,s,m,l,xl)
+  = f.label :sizes
+  .controls
+    = f.text_field :sizes
+
+.control-group
+  %p List colors separated by commas (green,red,blue, etc.)
+  = f.label :colors
+  .controls
+    = f.text_field :colors
+
+.control-group
+  = f.file_field :image
+
+.form-actions
+  = f.submit 'Create Product'
