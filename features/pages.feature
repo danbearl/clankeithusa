@@ -37,5 +37,4 @@ Feature: Pages
 			| body | This is the about page. |
 		And I am on that page.
     When I follow "Delete"
-    And I accept the confirmation.
 		Then I should see "Page successfully deleted."

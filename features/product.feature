@@ -43,4 +43,4 @@ Feature: Product
       | price       | 5.95                         |
     And I am on that product's page.
     When I follow "Delete"
-    Then I should see "Page successfully deleted."
+    Then I should see "Product successfully deleted."

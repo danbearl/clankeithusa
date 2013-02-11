@@ -61,10 +61,6 @@ When /^I press "(.*?)"$/ do |action|
   click_button action
 end
 
-When /^I accept the confirmation\.$/ do
-  page.driver.browser.switch_to.alert.accept
-end
-
 # Thens
 Then /^I should see "(.*?)"$/ do |text|
   page.should have_content text
