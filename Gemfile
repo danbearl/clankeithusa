@@ -7,15 +7,19 @@ gem 'buildybuild'
 gem 'carrierwave'
 gem 'decent_exposure'
 gem 'dynamic_form'
+gem 'env.rb'
 gem 'fog'
 gem 'formal'
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'pg'
 gem 'rails', '3.2.11'
 gem 'rdiscount'
 gem 'rmagick'
 gem 'will_paginate', '~> 3.0.0'
+
+group :production do
+  gem 'pg'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -35,9 +39,11 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara'
   gem 'cucumber-rails'
   gem 'dirty'
-  gem 'rspec-rails'
-  gem 'capybara'
   gem 'nyan-cat-formatter'
+  gem 'poltergeist', git: 'git://github.com/jonleighton/poltergeist.git' 
+  gem 'selenium-webdriver'
+  gem 'rspec-rails'
 end
