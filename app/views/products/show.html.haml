@@ -8,6 +8,17 @@
 
     %p= number_to_currency(product.price.to_f)
 
+    = form_tag action: :add_to_cart, method: :post do
+      = hidden_field_tag :name, product.name
+      = hidden_field_tag :price, product.price
+
+      %dt
+        = label_tag :quantity, "Quantity"
+      %dd
+        = text_field_tag :quantity
+      .action
+        = submit_tag "Add To Cart"
+
     - if user_is_admin?
       = link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(product), :class => 'btn'
       = link_to t('.destroy', :default => "Delete"), product, :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

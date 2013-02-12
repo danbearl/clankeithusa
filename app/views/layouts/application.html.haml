@@ -44,6 +44,8 @@
                               %li= link_to(page.name, slug_path(page.slug))
                   %li
                     = link_to 'Calendar', events_path
+                  %li
+                    = link_to 'Store', products_path
                   - if !current_user
                     %li
                       = link_to "Log In", "/log_in"
