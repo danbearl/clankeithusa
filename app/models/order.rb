@@ -29,29 +29,14 @@ class Order < ActiveRecord::Base
     products.each do |product|
       next if !product.has_key?(:price)
 
-      sub += product[:price].to_f
+      sub += product[:price].to_f * product[:quantity]
     end
 
     return sub
   end
 
   def shipping
-    sub = subtotal
-    if sub <= 25
-      return 5.95
-    elsif sub <= 50
-      return 7.95
-    elsif sub <= 75
-      return 8.95
-    elsif sub <= 100
-      return 9.95
-    elsif sub <= 150
-      return 12.95
-    elsif sub <= 200
-      return 13.95
-    elsif sub > 200
-      return 14.95
-    end
+    self.calc_shipping(subtotal)
   end
 
   def total
@@ -74,6 +59,26 @@ class Order < ActiveRecord::Base
     end
 
     tmp
+  end
+
+  def self.calc_shipping(sub)
+    if sub <= 25
+      shipping = 5.95
+    elsif sub <= 50
+      shipping = 7.95
+    elsif sub <= 75
+      shipping = 8.95
+    elsif sub <= 100
+      shipping = 9.95
+    elsif sub <= 150
+      shipping = 12.95
+    elsif sub <= 200
+      shipping = 13.95
+    elsif sub > 200
+      shipping = 14.95
+    end
+
+    return shipping
   end
 
   private
