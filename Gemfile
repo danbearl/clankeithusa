@@ -43,7 +43,7 @@ group :test do
   gem 'cucumber-rails'
   gem 'dirty'
   gem 'nyan-cat-formatter'
-  gem 'poltergeist', git: 'git://github.com/jonleighton/poltergeist.git' 
+  gem 'poltergeist', git: 'git://github.com/jonleighton/poltergeist.git'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
 end

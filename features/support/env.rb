@@ -5,8 +5,7 @@
 # files.
 
 require 'cucumber/rails'
-
-require 'capybara/poltergeist'
+require 'cucumber/poltergeist'
 
 Capybara.javascript_driver = :poltergeist
 
