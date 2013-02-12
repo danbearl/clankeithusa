@@ -44,6 +44,7 @@ group :test do
   gem 'dirty'
   gem 'nyan-cat-formatter'
   gem 'poltergeist', git: 'git://github.com/jonleighton/poltergeist.git'
+  gem "capybara-webkit", :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
 end
