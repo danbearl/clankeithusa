@@ -36,7 +36,7 @@ Feature: Product
     Then I should see "Product successfully updated."
     And I should see "A great fashion accessory"
 
-  Scenario: Delete Product
+  Scenario: Destroy Product
     Given the following product:
       | name        | hat                          |
       | description | A thing to wear on your head |
