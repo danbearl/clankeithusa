@@ -1,20 +1,9 @@
 Clankeithusa::Application.routes.draw do
-  get "products/new"
 
-  get "products/edit"
-
-  get "products/show"
-
-  get "products/index"
-
-  get "documents/new"
-
-  get "documents/edit"
-
-  get "documents/show"
-
-  get "documents/index"
-
+  post "product/add_to_cart" => "products#add_to_cart"
+  post "cart/empty_cart" => "cart#empty_cart"
+  match "order/payment" => "orders#payment"
+  get "cart" => "cart#show", :as => "cart"
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
@@ -25,6 +14,7 @@ Clankeithusa::Application.routes.draw do
   resources :announcements
   resources :documents
   resources :products
+  resources :orders
 
   root :to => 'home#index'
 
