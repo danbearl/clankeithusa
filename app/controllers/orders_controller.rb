@@ -1,7 +1,15 @@
 class OrdersController < ApplicationController
+
+  before_filter :require_admin, except: [:new]
   expose(:orders)
   expose(:order)
   expose(:order_items) {Order.unpack_products(order.products)}
+
+  def new
+    if session[:cart].empty?
+      redirect_to products_path, notice: "Your cart is empty"
+    end
+  end
 
   def create
     @order = Order.new(params[:order])
