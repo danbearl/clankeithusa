@@ -16,3 +16,6 @@
 /public/uploads/tmp
 *.swp
 *.un~
+
+# Ignore application configuration
+/config/application.yml
