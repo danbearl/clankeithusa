@@ -24,29 +24,29 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'twitter-bootstrap-rails'
-  gem 'libv8'
-  gem 'therubyracer'
-  gem 'less-rails'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'less-rails'
+  gem 'libv8'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'therubyracer'
+  gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'pry'
-  gem 'fabrication'
   gem 'database_cleaner'
+  gem 'fabrication'
+  gem 'pry'
+  gem 'sqlite3'
 end
 
 group :test do
+  gem "capybara-webkit", :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'capybara'
   gem 'cucumber-rails'
   gem 'dirty'
   gem 'nyan-cat-formatter'
   gem 'poltergeist', git: 'git://github.com/jonleighton/poltergeist.git'
-  gem "capybara-webkit", :git => 'https://github.com/thoughtbot/capybara-webkit.git'
-  gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
 end
