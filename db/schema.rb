@@ -75,8 +75,9 @@ ActiveRecord::Schema.define(:version => 20130204232257) do
     t.text     "notes"
     t.text     "products"
     t.string   "stripe_card_token"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "stripe_payment_token"
   end
 
   create_table "pages", :force => true do |t|

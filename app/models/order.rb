@@ -1,7 +1,8 @@
 class Order < ActiveRecord::Base
+
   attr_accessible :address_city, :address_state, :address_street_1, :address_street_2, :address_zip, :customer_first_name, :customer_last_name, :email, :notes, :processed, :products, :shipped, :stripe_card_token
   
-  attr_accessor :stripe_card_token
+  attr_accessor :stripe_card_token, :stripe_payment_token
 
   def save_with_payment
     if valid?
@@ -10,7 +11,7 @@ class Order < ActiveRecord::Base
         amount: total,
         currency: "usd",
         card: stripe_card_token,
-        description: "Charge for #{customer_email}"
+        description: "Charge for #{email}"
       )
 
       self.stripe_payment_token = payment_response.id
