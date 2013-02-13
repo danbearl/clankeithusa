@@ -63,7 +63,9 @@ class Order < ActiveRecord::Base
   end
 
   def self.calc_shipping(sub)
-    if sub <= 25
+    if sub <= 0
+      shipping = 0
+    elsif sub <= 25
       shipping = 5.95
     elsif sub <= 50
       shipping = 7.95
