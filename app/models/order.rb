@@ -25,19 +25,19 @@ class Order < ActiveRecord::Base
 
   def subtotal
     products = Order.unpack_products(self.products)
-    sub = 0
+    sub = 0.00
 
     products.each do |product|
       next if !product.has_key?(:price)
 
-      sub += product[:price].to_f * product[:quantity]
+      sub += product[:price].to_f * product[:quantity].to_i
     end
 
     return sub
   end
 
   def shipping
-    self.calc_shipping(subtotal)
+    Order.calc_shipping(subtotal)
   end
 
   def total
