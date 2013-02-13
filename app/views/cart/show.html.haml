@@ -2,45 +2,48 @@
   .span12
     %h1 Cart
 
-.row
-  .span12
-    %table.table
-      %tr
-        %th Name
-        %th Price
-        %th Quantity
-        %th Subtotal
+- if session[:cart] != nil
+  .row
+    .span12
+      %table.table
+        %tr
+          %th Name
+          %th Price
+          %th Quantity
+          %th Subtotal
 
-      - session[:cart].each do |item|
-        .span12
-          %tr
-            %td
-              = item[:name]
-            %td
-              = number_to_currency item[:price]
-            %td
-              = item[:quantity]
-            %td
-              = number_to_currency(item[:price].to_f * item[:quantity].to_f)
+          - session[:cart].each do |item|
+            .span12
+              %tr
+                %td
+                  = item[:name]
+                %td
+                  = number_to_currency item[:price]
+                %td
+                  = item[:quantity]
+                %td
+                  = number_to_currency(item[:price].to_f * item[:quantity].to_f)
 
-.row
-  .span3
-    = link_to "Proceed to Check Out", new_order_path(shipping: shipping, subtotal: subtotal)
+  .row
+    .span3
+      = link_to "Proceed to Check Out", new_order_path(shipping: shipping, subtotal: subtotal)
 
-.row
-  .span3
-    %p
-      Order Subtotal:
-      = number_to_currency subtotal
-    %p
-      Shipping:
-      = number_to_currency shipping
+  .row
+    .span3
+      %p
+        Order Subtotal:
+        = number_to_currency subtotal
+      %p
+        Shipping:
+        = number_to_currency shipping
 
-    %p
-      Total:
-      = number_to_currency subtotal + shipping
+      %p
+        Total:
+        = number_to_currency subtotal + shipping
 
-.row
-  .span12
-    = form_tag action: :empty_cart do
-      = submit_tag "Empty Cart"
+  .row
+    .span12
+      = form_tag action: :empty_cart do
+        = submit_tag "Empty Cart"
+- else
+  %p Cart Empty!
