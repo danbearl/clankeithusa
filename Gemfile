@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'rails', '3.2.11'
 gem 'rdiscount'
 gem 'rmagick'
+gem 'stripe'
 gem 'will_paginate', '~> 3.0.0'
 
 group :production do
