@@ -44,6 +44,7 @@
 .row
   .span12
     #stripe_error
+    #form_errors
     = form_for order do |f|
       = f.hidden_field :shipped, value: "false"
       = f.hidden_field :processed, value: "false"

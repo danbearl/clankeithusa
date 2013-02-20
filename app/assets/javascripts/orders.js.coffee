@@ -9,7 +9,12 @@ order =
   setupForm: ->
     $('#new_order').submit ->
       $('input[type=submit]').attr('disabled', true)
-      order.processCard()
+      form_errors = order.validateCustomerInfo()
+      if form_errors == ""
+        order.processCard()
+      else
+        $('#form_errors').text(form_errors)
+        $('input[type=submit]').attr('disabled', false)
       false
 
   processCard: ->
@@ -27,3 +32,18 @@ order =
     else
       $('#stripe_error').text(response.error.message)
       $('input[type=submit]').attr('disabled', false)
+
+  validateCustomerInfo: ->
+    email = new RegExp(/^\S+@\S+$/)
+    $('#form_errors').text("In validateCustomerInfo()")
+
+    errors = ""
+    if $('#order_customer_first_name').val().length < 1
+      errors = errors + "First name cannot be blank.\n"
+    if $('#order_customer_last_name').val().length < 1
+      errors = errors + "Last name cannot be blank.\n"
+    if !email.test($('#order_email').val())
+      errors = errors + "Please enter a valid e-mail address."
+
+    return errors
+
