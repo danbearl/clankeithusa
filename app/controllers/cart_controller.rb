@@ -7,4 +7,9 @@ class CartController < ApplicationController
     session[:cart] = []
     redirect_to "/cart/", notice: "Cart emptied!"
   end
+
+  def remove_item
+    session[:cart].delete_at(params[:index].to_i)
+    redirect_to "/cart/", notice: "Item removed!"
+  end
 end

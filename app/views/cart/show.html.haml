@@ -14,7 +14,7 @@
           %th Quantity
           %th Subtotal
 
-          - session[:cart].each do |item|
+          - session[:cart].each_with_index do |item, i|
             .span12
               %tr
                 %td
@@ -35,10 +35,10 @@
                   = item[:quantity]
                 %td
                   = number_to_currency(item[:price].to_f * item[:quantity].to_f)
-
-  .row
-    .span3
-      = link_to "Proceed to Check Out", new_order_path(shipping: shipping, subtotal: subtotal)
+                %td
+                  = form_tag action: :remove_item do
+                    = hidden_field_tag :index, i
+                    = submit_tag "Remove"
 
   .row
     .span3
