@@ -10,7 +10,7 @@
       Shipping Address:
       %br
 
-      = "#{@order.customer_first_name} #{@order.customer_last_name}
+      = "#{@order.customer_first_name} #{@order.customer_last_name}"
       %br
       = @order.address_street_1
       %br
@@ -37,13 +37,19 @@
         - Order.unpack_products(@order.products).each do |product|
           %tr
             %td
-              = product.name
+              = product[:name]
             %td
-              = number_to_currency(product.price.to_f)
+              = number_to_currency(product[:price].to_f)
             %td
-              = product.quantity
+              = product[:quantity]
             %td
-              = number_to_currency(product.price.to_f * product.quantity.to_i)
+              = number_to_currency(product[:price].to_f * product[:quantity].to_i)
+      %p
+        = "Subtotal: #{@order.subtotal}"
+      %p
+        = "Shipping: #{@order.shipping}"
+      %p
+        = "Total: #{@order.total}"
 
     %p If you have any questions or concerns, please contact us at [EMAIL]. Thank you for your support!
 

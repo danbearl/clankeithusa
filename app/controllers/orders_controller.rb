@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_filter :require_admin, except: [:new]
+  before_filter :require_admin, only: [:index]
   expose(:orders)
   expose(:order)
   expose(:order_items) {Order.unpack_products(order.products)}
@@ -17,6 +17,8 @@ class OrdersController < ApplicationController
     @order.products = Order.pack_products(session[:cart])
 
     if @order.save_with_payment
+      StoreMailer.order_confirmation(@order).deliver
+      StoreMailer.order_notification(@order).deliver
       session[:cart] = []
       redirect_to root_path, notice: "Thank you for your order!"
     else
