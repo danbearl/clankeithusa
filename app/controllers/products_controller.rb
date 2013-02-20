@@ -28,13 +28,27 @@ class ProductsController < ApplicationController
       session[:cart] = [] 
     end
 
-    cart = {
+    item = {
       name: params[:name],
       price: params[:price],
-      quantity: params[:quantity]
+      quantity: params[:quantity].to_i,
+      color: params[:color],
+      size: params[:size]
     }
 
-    session[:cart] << cart
+    consolidated = false
+
+    session[:cart].each_with_index do |cart_item, i|
+      if cart_item[:name] == item[:name] and cart_item[:color] == item[:color] and cart_item[:size] == item[:size]
+        session[:cart][i][:quantity] += item[:quantity]
+        consolidated = true
+      end 
+    end
+
+    if consolidated == false
+      session[:cart] << item
+    end
+
     redirect_to products_path, notice: "Added to cart."
   end
 end
