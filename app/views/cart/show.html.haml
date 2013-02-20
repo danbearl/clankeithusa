@@ -52,6 +52,10 @@
       %p
         Total:
         = number_to_currency subtotal + shipping
+  .row
+    .span3
+      = link_to "Proceed to Check Out", new_order_path(shipping: shipping, subtotal: subtotal), class: 'btn btn-primary'
+
 
   .row
     .span12
