@@ -7,6 +7,8 @@
     %table.table
       %tr
         %th Name
+        %th Size
+        %th Color
         %th Price
         %th Quantity
         %th Subtotal
@@ -16,6 +18,10 @@
           %tr
             %td
               = item[:name]
+            %td
+              = item[:size]
+            %td
+              = item[:color]
             %td
               = number_to_currency item[:price]
             %td

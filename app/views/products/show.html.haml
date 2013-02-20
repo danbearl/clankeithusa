@@ -16,6 +16,16 @@
         = label_tag :quantity, "Quantity"
       %dd
         = text_field_tag :quantity
+      -if product.list_sizes
+        %dt
+          = label_tag :size, "Size"
+        %dd
+          = select_tag(:size, options_for_select(product.list_sizes.collect {|s| [s,s]}))
+      -if product.list_colors
+        %dt
+          = label_tag :color, "Color"
+        %dd
+          = select_tag(:color, options_for_select(product.list_colors.collect {|c| [c,c]}))
       .action
         = submit_tag "Add To Cart"
 

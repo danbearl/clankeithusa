@@ -8,6 +8,8 @@
       %table.table
         %tr
           %th Name
+          %th Size
+          %th Color
           %th Price
           %th Quantity
           %th Subtotal
@@ -17,6 +19,16 @@
               %tr
                 %td
                   = item[:name]
+                %td
+                  - if item[:size] != nil
+                    = item[:size]
+                  - else
+                    \-
+                %td
+                  - if item[:color] != nil
+                    = item[:color]
+                  - else
+                    \-
                 %td
                   = number_to_currency item[:price]
                 %td
