@@ -41,12 +41,12 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara-webkit", :git => 'https://github.com/thoughtbot/capybara-webkit.git'
+  # gem "capybara-webkit", :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'capybara'
   gem 'cucumber-rails'
   gem 'dirty'
   gem 'nyan-cat-formatter'
-  gem 'poltergeist', git: 'git://github.com/jonleighton/poltergeist.git'
+  # gem 'poltergeist', git: 'git://github.com/jonleighton/poltergeist.git'
   gem 'rspec-rails'
-  gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
 end
