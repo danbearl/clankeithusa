@@ -1,10 +1,10 @@
 class Order < ActiveRecord::Base
 
-  attr_accessible :address_city, :address_state, :address_street_1, :address_street_2, :address_zip, :customer_first_name, :customer_last_name, :email, :notes, :processed, :products, :shipped, :stripe_card_token
+  attr_accessible :address_city, :address_state, :address_street_1, :address_street_2, :address_zip, :customer_first_name, :customer_last_name, :email, :notes, :processed, :products, :shipped, :stripe_payment_token
   
-  attr_accessor :stripe_card_token, :stripe_payment_token
+  attr_accessor :stripe_card_token
 
-  def save_with_payment
+  def save_with_payment(stripe_card_token)
     if valid?
       total = (100 * (shipping.to_f + subtotal.to_f)).to_i
       payment_response = Stripe::Charge.create(

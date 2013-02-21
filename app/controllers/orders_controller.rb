@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
     @order.products = Order.pack_products(session[:cart])
 
-    if @order.save_with_payment
+    if @order.save_with_payment(params[:stripe_card_token])
       StoreMailer.order_confirmation(@order).deliver
       StoreMailer.order_notification(@order).deliver
       session[:cart] = []
@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
 
   def destroy
     order.destroy
-    redirect_to :root, notice: "Order successfully deleted."
+    redirect_to orders_path, notice: "Order successfully deleted."
   end
 
 end

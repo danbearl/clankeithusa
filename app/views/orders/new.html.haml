@@ -43,30 +43,33 @@
 
 .row
   .span12
-    #stripe_error
-    #form_errors
+    #stripe_error.text-error
     = form_for order do |f|
       = f.hidden_field :shipped, value: "false"
       = f.hidden_field :processed, value: "false"
-      = f.hidden_field :stripe_card_token
+      = hidden_field_tag :stripe_card_token
       = f.hidden_field :products, value: Order.pack_products(session[:cart])
       
       %dt
+        #first_name_error.text-error
         = f.label :customer_first_name, "First Name"
       %dd
         = f.text_field :customer_first_name
 
       %dt
+        #last_name_error.text-error
         = f.label :customer_last_name, "Last Name"
       %dd
         = f.text_field :customer_last_name
       
       %dt
+        #email_error.text-error
         = f.label :email, "E-Mail"
       %dd
         = f.text_field :email
      
       %dt
+        #address_street_error.text-error
         = f.label :address_street_1, "Street 1"
       %dd
         = f.text_field :address_street_1
@@ -77,16 +80,19 @@
         = f.text_field :address_street_2
 
       %dt
+        #address_city_error.text-error
         = f.label :address_city, "City"
       %dd
         = f.text_field :address_city
 
       %dt
+        #address_state_error.text-error
         = f.label :address_state, "State"
       %dd
         = f.text_field :address_state, size: "2"
 
       %dt
+        #address_zip_error.text-error
         = f.label :address_zip, "Zip"
       %dd
         = f.text_field :address_zip

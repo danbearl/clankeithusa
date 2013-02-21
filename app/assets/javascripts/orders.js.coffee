@@ -8,12 +8,11 @@ jQuery ->
 order =
   setupForm: ->
     $('#new_order').submit ->
+      order.clearErrors()
       $('input[type=submit]').attr('disabled', true)
-      form_errors = order.validateCustomerInfo()
-      if form_errors == ""
+      if !order.validateCustomerInfo()
         order.processCard()
       else
-        $('#form_errors').text(form_errors)
         $('input[type=submit]').attr('disabled', false)
       false
 
@@ -27,7 +26,7 @@ order =
 
   handleStripeResponse: (status, response) ->
     if status == 200
-      $('#order_stripe_card_token').val(response.id)
+      $('#stripe_card_token').val(response['id'])
       $('#new_order')[0].submit()
     else
       $('#stripe_error').text(response.error.message)
@@ -35,15 +34,43 @@ order =
 
   validateCustomerInfo: ->
     email = new RegExp(/^\S+@\S+$/)
-    $('#form_errors').text("In validateCustomerInfo()")
+    zip = new RegExp(/^\d{5}(?:[-\s]\d{4})?$/)
 
-    errors = ""
+    errors = false
     if $('#order_customer_first_name').val().length < 1
-      errors = errors + "First name cannot be blank.\n"
+      errors = true
+      $('#first_name_error').text("First name cannot be blank.")
     if $('#order_customer_last_name').val().length < 1
-      errors = errors + "Last name cannot be blank.\n"
+      errors = true
+      $('#last_name_error').text("Last name cannot be blank.")
     if !email.test($('#order_email').val())
-      errors = errors + "Please enter a valid e-mail address."
+      errors = true
+      $('#email_error').text("Please enter a valid e-mail address.")
+
+    if $('#order_address_street_1').val().length < 1
+      errors = true
+      $('#address_street_error').text("Please enter a valid street address.")
+
+    if $('#order_address_city').val().length < 1
+      errors = true
+      $('#address_city_error').text("Please enter a valid city.")
+
+    if $('#order_address_state').val().length < 1
+      errors = true
+      $('#address_state_error').text("Please enter a valid state.")
+
+    if !zip.test($('#order_address_zip').val())
+      errors = true
+      $('#address_zip_error').text("Please enter a valid zip code.")
 
     return errors
+
+  clearErrors: ->
+    $('#first_name_error').text("")
+    $('#last_name_error').text("")
+    $('#email_error').text("")
+    $('#address_street_error').text("")
+    $('#address_city_error').text("")
+    $('#address_state_error').text("")
+    $('#address_zip_error').text("")
 
