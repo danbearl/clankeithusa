@@ -13,4 +13,10 @@ class StoreMailer < ActionMailer::Base
 
     mail(subject: "New order from clankeithusa.org")
   end
+
+  def new_applicant(applicant)
+    @applicant = applicant
+
+    mail(subject: "New Application For Clan Keith Membership")
+  end
 end
