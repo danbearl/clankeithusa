@@ -4,10 +4,12 @@ Clankeithusa::Application.routes.draw do
   post "cart/empty_cart" => "cart#empty_cart"
   post "cart/remove_item" => "cart#remove_item"
   match "order/payment" => "orders#payment"
-  get "cart" => "cart#show", :as => "cart"
+  get "cart" => "cart#show", as: "cart"
+  get "join" => "apply#new", as: "join"
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
+  resource :apply
   resources :users
   resources :images
   resources :events
@@ -17,7 +19,7 @@ Clankeithusa::Application.routes.draw do
   resources :products
   resources :orders
 
-  root :to => 'home#index'
+  root to: 'home#index'
 
   resources :pages, only: [:new, :create, :index] do
     resources :images

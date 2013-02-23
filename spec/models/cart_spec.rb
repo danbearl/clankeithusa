@@ -1,4 +1,4 @@
-require 'spec_helper.rb'
+require 'spec_helper'
 
 describe Cart do
   it "consolidates its contents" do
