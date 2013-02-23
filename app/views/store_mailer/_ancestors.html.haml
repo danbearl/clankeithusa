@@ -1,0 +1,12 @@
+%h3= "#{category.capitalize.gsub("_"," ")}'s Information"
+
+= render partial: 'ancestor', locals: { ancestor: ancestor_1 }
+
+%h4 Marriage
+= "Marriage Date: #{@applicant.send(category + "_marriage_date")}"
+%br
+
+= "Marriage Place: #{@applicant.send(category + "_marriage_place")}"
+%br
+
+= render partial: 'ancestor', locals: { ancestor: ancestor_2 }

@@ -1,0 +1,67 @@
+= form_for @applicant, url: join_path do |f|
+  .application-group#applicant-info
+    %h3 Applicant Information
+
+    .row
+      .span4
+        = f.label :applicant_first_name, "First Name"
+        %br
+        = f.text_field :applicant_first_name
+      .span4
+        = f.label :applicant_last_name, "Last Name"
+        %br
+        = f.text_field :applicant_last_name
+
+    .row
+      .span4
+        = f.label :applicant_birth_date, "Birth Date"
+        %br
+        = f.text_field :applicant_birth_date
+      .span4
+        = f.label :applicant_birth_place, "Birth Place"
+        %br
+        = f.text_field :applicant_birth_place
+
+    .row
+      .span3
+        %h4 Address
+
+    .row
+      .span3
+        = f.label :address, "Street"
+        %br
+        = f.text_field :address
+      .span3
+        = f.label :city, "City"
+        %br
+        = f.text_field :city
+      .span3
+        = f.label :state, "State"
+        %br
+        = f.text_field :state
+      .span3
+        = f.label :zip, "Zip"
+        %br
+        = f.text_field :zip
+
+    .row
+      .span4
+        = f.label :email, "E-Mail"
+        %br
+        = f.email_field :email
+
+  .application-group
+    %h3 Spouse Information
+    = render partial: "ancestor", locals: { f: f, ancestor: "spouse" }
+
+  = render partial: "ancestors", locals: { f: f, category: "parents", ancestor_1: "father", ancestor_2: "mother" }
+  = render partial: "ancestors", locals: { f: f, category: "grandparents", ancestor_1: "grandfather", ancestor_2: "grandmother" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_1", ancestor_1: "ancestor_1a", ancestor_2: "ancestor_1b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_2", ancestor_1: "ancestor_2a", ancestor_2: "ancestor_2b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_3", ancestor_1: "ancestor_3a", ancestor_2: "ancestor_3b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_4", ancestor_1: "ancestor_4a", ancestor_2: "ancestor_4b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_5", ancestor_1: "ancestor_5a", ancestor_2: "ancestor_5b" }
+
+  .row
+    .span4
+      = f.submit

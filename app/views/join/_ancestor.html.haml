@@ -1,0 +1,32 @@
+%h4= ancestor.capitalize.gsub("_", " ")
+.row
+  .span4
+    = f.label "#{ancestor}_first_name".to_sym, "First Name"
+    %br
+    = f.text_field "#{ancestor}_first_name".to_sym
+  .span4
+    = f.label "#{ancestor}_last_name".to_sym, "Last Name"
+    %br
+    = f.text_field "#{ancestor}_last_name".to_sym
+.row
+  .span4
+    = f.label "#{ancestor}_birth_date".to_sym, "Birth Date"
+    %br
+    = f.text_field "#{ancestor}_birth_date".to_sym
+  .span4
+    = f.label "#{ancestor}_birth_place".to_sym, "Birth Place"
+    %br
+    = f.text_field "#{ancestor}_birth_place".to_sym
+.row
+  .span3
+    = label_tag "#{ancestor}_deceased".to_sym, "Deceased?"
+    = check_box_tag "#{ancestor}_deceased".to_sym, "1", false, class: 'checkbox'
+.row
+  .span4
+    = f.label "#{ancestor}_death_date".to_sym, "Date of Death"
+    %br
+    = f.text_field "#{ancestor}_death_date".to_sym, disabled: true
+  .span4
+    = f.label "#{ancestor}_death_place".to_sym, "Place of Death"
+    %br
+    = f.text_field "#{ancestor}_death_place".to_sym, disabled: true

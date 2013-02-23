@@ -1,0 +1,19 @@
+%h4= ancestor.capitalize.gsub("_", " ")
+
+= "First Name: #{@applicant.send(ancestor + "_first_name")}"
+%br
+
+= "Last Name: #{@applicant.send(ancestor + "_last_name")}"
+%br
+
+= "Birth Date: #{@applicant.send(ancestor + "_birth_date")}"
+%br
+
+= "Birth Place: #{@applicant.send(ancestor + "_birth_place")}"
+%br
+
+= "Date of Death: #{@applicant.send(ancestor + "_death_date")}"
+%br
+
+= "Place of Death: #{@applicant.send(ancestor + "_death_place")}"
+%br
