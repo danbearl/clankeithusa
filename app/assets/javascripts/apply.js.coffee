@@ -3,9 +3,13 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $("#spouse_deceased").change ->
-    toggleDisabled('#applicant_spouse_death_date')
-    toggleDisabled('#applicant_spouse_death_place')
+  $("#new_applicant").delegate '.checkbox', 'change', (evt) ->
+    name = $(this).attr("id").split("_")
+    name.pop()
+    name = name.join('_')
+
+    toggleDisabled('#applicant_' + name + '_death_date')
+    toggleDisabled('#applicant_' + name + '_death_place')
 
 
   toggleDisabled = (id) ->
