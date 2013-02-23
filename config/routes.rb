@@ -5,11 +5,12 @@ Clankeithusa::Application.routes.draw do
   post "cart/remove_item" => "cart#remove_item"
   match "order/payment" => "orders#payment"
   get "cart" => "cart#show", as: "cart"
-  get "join" => "apply#new", as: "join"
+  match "join" => "join#new", as: "join", via: :get
+  match "join" => "join#create", as: "join", via: :post
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
-  resource :apply
+  resource :join
   resources :users
   resources :images
   resources :events
