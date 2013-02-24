@@ -1,32 +1,40 @@
-%h4= ancestor.capitalize.gsub("_", " ")
-.row
-  .span4
-    = f.label "#{ancestor}_first_name".to_sym, "First Name"
-    %br
-    = f.text_field "#{ancestor}_first_name".to_sym
-  .span4
-    = f.label "#{ancestor}_last_name".to_sym, "Last Name"
-    %br
-    = f.text_field "#{ancestor}_last_name".to_sym
-.row
-  .span4
-    = f.label "#{ancestor}_birth_date".to_sym, "Birth Date"
-    %br
-    = f.text_field "#{ancestor}_birth_date".to_sym
-  .span4
-    = f.label "#{ancestor}_birth_place".to_sym, "Birth Place"
-    %br
-    = f.text_field "#{ancestor}_birth_place".to_sym
-.row
-  .span3
-    = label_tag "#{ancestor}_deceased".to_sym, "Deceased?"
-    = check_box_tag "#{ancestor}_deceased".to_sym, "1", false, class: 'checkbox'
-.row
-  .span4
-    = f.label "#{ancestor}_death_date".to_sym, "Date of Death"
-    %br
-    = f.text_field "#{ancestor}_death_date".to_sym, disabled: true
-  .span4
-    = f.label "#{ancestor}_death_place".to_sym, "Place of Death"
-    %br
-    = f.text_field "#{ancestor}_death_place".to_sym, disabled: true
+.horizontal-group
+  %h4= ancestor.capitalize.gsub("_", " ")
+
+.horizontal-group
+  .control-group
+    = f.label "#{ancestor}_first_name".to_sym, "First Name", class: 'control-label'
+    .controls
+      = f.text_field "#{ancestor}_first_name".to_sym
+
+  .control-group
+    = f.label "#{ancestor}_last_name".to_sym, "Last Name", class: 'control-label'
+    .controls
+      = f.text_field "#{ancestor}_last_name".to_sym
+  .control-group
+    = f.label "#{ancestor}_birth_date".to_sym, "Birth Date", class: 'control-label'
+    .controls
+      = f.text_field "#{ancestor}_birth_date".to_sym
+
+  .control-group
+    = f.label "#{ancestor}_birth_place".to_sym, "Birth Place", class: 'control-label'
+    .controls
+      = f.text_field "#{ancestor}_birth_place".to_sym
+      
+.horizontal-group
+  .control-group
+    = label_tag "#{ancestor}_deceased".to_sym, "Deceased?", class: 'control-label'
+    .controls
+      = check_box_tag "#{ancestor}_deceased".to_sym, "1", false, class: 'checkbox'
+
+  .control-group
+    = f.label "#{ancestor}_death_date".to_sym, "Date of Death", class: 'control-label'
+    .controls
+      = f.text_field "#{ancestor}_death_date".to_sym, disabled: true
+
+  .control-group
+    = f.label "#{ancestor}_death_place".to_sym, "Place of Death", class: 'control-label'
+    .controls
+      = f.text_field "#{ancestor}_death_place".to_sym, disabled: true
+
+.horizontal-group

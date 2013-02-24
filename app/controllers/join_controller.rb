@@ -2,6 +2,10 @@ class JoinController < ApplicationController
 
   def new
     @applicant = Applicant.new
+
+    @options = [ [ 'Individual', 'individual'],
+                 [ 'Household', 'household'],
+                 [ 'Lifetime Individual', 'lifetime'] ]
   end
 
   def create

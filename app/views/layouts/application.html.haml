@@ -45,16 +45,15 @@
                           - p.sub_pages.reorder(:priority).each do |page|
                             - if page.public or current_user
                               %li= link_to(page.name, slug_path(page.slug))
-                  %li
-                    = link_to 'Calendar', events_path
-                  %li
-                    = link_to 'Store', products_path
+                  %li= link_to 'Calendar', events_path
+                  %li= link_to 'Store', products_path
+                  %li= link_to 'Comments', comments_path
+                  -if !current_user
+                    %li= link_to 'Apply For Membership', '/join'
                   - if !current_user
-                    %li
-                      = link_to "Log In", "/log_in"
+                    %li= link_to "Log In", "/log_in"
                   - else
-                    %li
-                      = link_to "Log Out", "/log_out"
+                    %li= link_to "Log Out", "/log_out"
       .row
         .span12
           - flash.each do |name, msg|

@@ -3,7 +3,7 @@ class Applicant
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :address, :city, :state, :zip, :email, 
+  attr_accessor :type, :address, :city, :state, :zip, :email, 
                 :applicant_first_name, :applicant_last_name, :applicant_birth_date, :applicant_birth_place, 
                 :applicant_marriage_date, :applicant_marriage_place, 
                 :spouse_first_name, :spouse_last_name, :spouse_birth_date, 

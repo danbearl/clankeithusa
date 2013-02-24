@@ -3,6 +3,7 @@ Clankeithusa::Application.routes.draw do
   post "product/add_to_cart" => "products#add_to_cart"
   post "cart/empty_cart" => "cart#empty_cart"
   post "cart/remove_item" => "cart#remove_item"
+  get 'comments/:id/approve' => 'comments#approve'
   match "order/payment" => "orders#payment"
   get "cart" => "cart#show", as: "cart"
   match "join" => "join#new", as: "join", via: :get
