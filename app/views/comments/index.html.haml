@@ -1,0 +1,30 @@
+.page-header
+  %h3 Comments about Clan Keith, USA
+
+.row
+  .span12
+    %p 
+      Clan Keith, USA welcomes all comments from our visitors! Please
+      = link_to "click here", new_comment_path
+      to leave a comment of your own!
+
+- if user_is_admin?
+  .row
+    .span12
+      %table.table.table-striped
+        -unapproved_comments.each do |c|
+          %tr
+            %td= c.body
+            %td= c.author
+            %td
+              = link_to t('.approve', default: "Approve"), "comments/#{c.id}/approve", class: 'btn btn-mini'
+              = link_to t('.destroy', default: "delete"), c, method: 'destroy', class: 'btn btn-mini btn-danger'
+
+
+.row
+  - approved_comments.each do |comment|
+    .span3.comment
+      %p
+        = comment.body
+      %p
+        = "- #{comment.author}"

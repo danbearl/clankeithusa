@@ -1,0 +1,13 @@
+.page-header
+  %h1 Approve Comment
+
+.row
+  .span4
+    %p
+      = comment.body
+    %p
+      %strong By:
+      = comment.author
+
+.row
+  = link_to t('.approve', default: "Approve"), comment, method: "approve", class: 'btn btn-primary'

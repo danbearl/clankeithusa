@@ -1,0 +1,14 @@
+=form_for comment, html: {class: 'form-horizontal'} do |f|
+  .control-group
+    = f.label :body, "Comment", class: 'control-label'
+    .controls
+      = f.text_area :body, rows: 10
+
+  .control-group
+    = f.label :author, "Your Name", class: 'control-label'
+    .controls
+      = f.text_field :author
+
+  .form-actions
+    = f.submit "Submit Comment", class: 'btn btn-primary'
+    = link_to t('.cancel', default: "Cancel"), comments_path, class: 'btn'
