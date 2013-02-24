@@ -12,6 +12,7 @@ Clankeithusa::Application.routes.draw do
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
   resource :join
+  resources :comments
   resources :users
   resources :images
   resources :events
