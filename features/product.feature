@@ -1,4 +1,3 @@
-@javascript
 Feature: Product
 	Background:
 		Given the following user:
@@ -28,6 +27,7 @@ Feature: Product
       | name        | hat                          |
       | description | A thing to wear on your head |
       | price       | 5.95                         |
+      | sizes       | xs,s,m,l,xl                  |
     And I am on that product's page.
     When I follow "Edit"
     And I fill in the following:

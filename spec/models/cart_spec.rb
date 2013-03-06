@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Cart do
-  it "consolidates its contents" do
-    cart = [{name: "hat", color: "green", size: "m", quantity: 5}, {name: "hat", color: "green", size: "m", quantity: 1}]
-    
-    cart = Cart.consolodate(cart)
+  describe '#subtotal' do
+    cart = [{name: "hat", color: "green", size: "m", quantity: 5, price: '5'}, {name: "hat", color: "green", size: "m", quantity: 1, price: '5'}]
 
-    cart[1][:quantity].should eq(6)
-    cart.length.should eq(1)
+    it 'calculates its subtotal' do
+      Cart.subtotal(cart).should eq(30)
+    end
   end
+
 end

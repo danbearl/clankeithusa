@@ -9,7 +9,7 @@ Fabricator(:order) do
   address_zip "12345"
   processed true
   notes "Draw a picture on the package."
-  products "hat@product,5.99@price,green@color,1@qty&shirt@product,15.99@price,red@color,xl@size"
+  products "hat@product,5.99@price,green@color,1@quantity&shirt@product,15.99@price,red@color,xl@size,1@quantity"
   shipped false
   stripe_card_token "12345"
 end
