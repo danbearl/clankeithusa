@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ProductImageUploader
 
   def list_colors
-    if self.colors == ""
+    if self.colors.blank?
       return false
     end
 
@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   end
 
   def list_sizes
-    if self.sizes == ""
+    if self.sizes.blank?
       return false
     end
 
