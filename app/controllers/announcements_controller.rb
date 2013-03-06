@@ -7,7 +7,7 @@ class AnnouncementsController < ApplicationController
 
   def create
     if new_announcement.save
-      redirect_to announcements_path
+      redirect_to announcements_path, notice: "Announcement successfully created."
     else
       render 'new'
     end
@@ -15,7 +15,7 @@ class AnnouncementsController < ApplicationController
   
   def update
     if announcement.save
-      redirect_to announcements_path
+      redirect_to announcements_path, notice: "Announcement successfully updated."
     else
       render 'edit'
     end

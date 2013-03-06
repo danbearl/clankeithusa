@@ -44,6 +44,18 @@ Given /^I am on the pages index\.$/ do
   visit pages_path
 end
 
+Given /^I am on the new announcement page$/ do
+  visit new_announcement_path
+end
+
+Given /^I am on the announcements index page$/ do
+  visit announcements_path
+end
+
+Given /^I am on the events page$/ do
+  visit events_path
+end
+
 # Whens
 When /^I follow "(.*?)"$/ do |link|
   click_link(link)

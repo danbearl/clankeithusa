@@ -11,15 +11,6 @@ class HomeController < ApplicationController
   expose(:announcements) do
     Announcement.where(
       live: true,
-      front_page: false,
-      site_wide: false
-    )
-  end
-
-  expose(:front_page_announcements) do
-    Announcement.where(
-      live: true,
-      front_page: true,
       site_wide: false
     )
   end
