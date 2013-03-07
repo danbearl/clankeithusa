@@ -1,5 +1,5 @@
 .page-header
   %h1 New Blurb
 
-= form_for blurb, url: {action: "create"}, builder: Formal::Builder do |f|
+= form_for [page, page.blurbs.build], builder: Formal::Builder do |f|
   = render partial: "form", locals: { f: f }

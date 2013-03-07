@@ -6,15 +6,6 @@
   = f.label :body
   .controls
     = f.text_area :body, class: "input-large"
-.control-group
-  = f.label :front_page
-  .controls
-    = f.check_box :front_page
-.control-group
-  = f.label :page_id
-  .controls
-    - @pages_array = Page.all.map {|page| [page.name, page.id] }
-    = f.select(:page_id, options_for_select(@pages_array, blurb.page_id))
 .form-actions
   = f.submit nil, class: 'btn btn-primary'
-  = link_to t('.cancel', default: "Cancel"), slug_path(Page.find(params[:page_id])), class: 'btn'
+  = link_to t('.cancel', default: "Cancel"), slug_path(Page.find(params[:page_id]).slug), class: 'btn'

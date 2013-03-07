@@ -8,8 +8,8 @@ Feature: Blurbs
       | admin                 | true            |
     And that user is logged in.
     And the following page:
-      | title | test |
-      | body  | test |
+      | name | test |
+      | body | test |
 
   Scenario: Create new blurb
     Given I am on that page.
@@ -22,13 +22,24 @@ Feature: Blurbs
     And I should see "sample blurb"
 
   Scenario: Update Blurb
-    Given I am on that page.
-    And the following blurb:
-      | name | blurb        |
-      | body | sample blurb |
+    Given the following blurb:
+      | name    | blurb        |
+      | body    | sample blurb |
+      | page_id | 1            |
+    And I am on that page.
     And I follow "Edit Blurb"
     And I fill in the following:
       | blurb_body | changed content |
     And I press "Update Blurb"
     Then I should see "Blurb successfully updated."
     And I should see "changed content"
+
+  Scenario: Delete Blurb
+    Given the following blurb:
+      | name    | blurb        |
+      | body    | sample blurb |
+      | page_id | 1            |
+    Given I am on that page.
+    And I follow "Delete Blurb"
+    Then I should see "blurb was deleted."
+    And I should not see "sample blurb"

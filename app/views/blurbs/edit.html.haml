@@ -1,5 +1,6 @@
 .page-header
   %h1 Edit Blurb
 
-= form_for blurb, url: page_blurb_path(blurb.page_id, blurb.id), builder: Formal::Builder do |f|
+= form_for blurb, builder: Formal::Builder do |f|
+  = f.hidden_field :page_id, value: params[:page_id]
   = render partial: "form", locals: { f: f }

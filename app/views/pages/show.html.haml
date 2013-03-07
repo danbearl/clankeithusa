@@ -1,4 +1,4 @@
-- if sub_pages.length > 0
+- if !sub_pages.blank?
   .row
     .span12
       .navbar.sub_nav
@@ -32,3 +32,6 @@
       .blurb
         :markdown
           #{blurb.body}
+        -if user_is_admin?
+          = link_to "Edit Blurb", edit_blurb_path(blurb.id, page_id: page.id), class: 'btn btn-mini'
+          = link_to "Delete Blurb", page_blurb_path(page.id,blurb.id), method: :delete, confirmation: "Are you sure?", class: 'btn btn-mini btn-danger'

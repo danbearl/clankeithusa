@@ -13,6 +13,7 @@ Clankeithusa::Application.routes.draw do
 
   resource :join
   resources :announcements
+  resources :blurbs
   resources :comments
   resources :documents
   resources :events
