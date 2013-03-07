@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :require_admin, only: [:edit, :update, :destroy]
+  before_filter :require_admin, only: [:approve, :destroy]
 
   expose(:comments)
   expose(:comment)
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
   def approve
     comment.approve
 
-    redirect_to comments_path
+    redirect_to comments_path, notice: "Comment approved."
 
   end
 

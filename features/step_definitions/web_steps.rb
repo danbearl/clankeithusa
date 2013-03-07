@@ -56,6 +56,10 @@ Given /^I am on the events page$/ do
   visit events_path
 end
 
+Given /^I am on the comments page$/ do
+  visit comments_path
+end
+
 # Whens
 When /^I follow "(.*?)"$/ do |link|
   click_link(link)

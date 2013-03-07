@@ -18,7 +18,7 @@
             %td= c.author
             %td
               = link_to t('.approve', default: "Approve"), "comments/#{c.id}/approve", class: 'btn btn-mini'
-              = link_to t('.destroy', default: "delete"), c, method: 'destroy', class: 'btn btn-mini btn-danger'
+              = link_to t('.destroy', default: "Delete"), comment_path(c), method: :delete, class: 'btn btn-mini btn-danger'
 
 
 .row
