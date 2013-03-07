@@ -6,9 +6,9 @@ class DocumentsController < ApplicationController
   def create
     if document.save
       if document.page_id != 0 and document.page_id != nil
-        redirect_to slug_path(owner.slug), notice: "Document successfully updated."
+        redirect_to slug_path(owner.slug), notice: "Document successfully created."
       else
-        redirect_to documents_path, notice: "Document succesfully updated."
+        redirect_to documents_path, notice: "Document succesfully created."
       end
     else
       render "new"
