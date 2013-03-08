@@ -8,8 +8,9 @@ Feature: Documents
       | admin                 | true            |
     And that user is logged in.
     And the following page:
-      | name | test |
-      | body | test |
+      | name     | test    |
+      | body     | test    |
+      | category | archive |
 
   Scenario: Create a document
     Given I am on that page.
@@ -25,6 +26,7 @@ Feature: Documents
     Given the following document:
       | name        | Issue 1               |
       | description | Our very first issue! |
+      | page_id     | 1                     |
     And I am on that page.
     When I follow "Edit Document"
     And I fill in the following:
@@ -37,6 +39,7 @@ Feature: Documents
     Given the following document:
       | name        | Issue 1               |
       | description | Our very first issue! |
+      | page_id     | 1                     |
     And I am on that page.
     When I follow "Delete Document"
     Then I should see "Document successfully deleted."

@@ -8,8 +8,9 @@ Feature: Blurbs
       | admin                 | true            |
     And that user is logged in.
     And the following page:
-      | name | test |
-      | body | test |
+      | name     | test |
+      | body     | test |
+      | category | text |
 
   Scenario: Create new blurb
     Given I am on that page.
