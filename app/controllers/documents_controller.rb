@@ -8,7 +8,7 @@ class DocumentsController < ApplicationController
       if document.page_id != 0 and document.page_id != nil
         redirect_to slug_path(owner.slug), notice: "Document successfully created."
       else
-        redirect_to documents_path, notice: "Document succesfully created."
+        redirect_to documents_path, notice: "Document successfully created."
       end
     else
       render "new"
