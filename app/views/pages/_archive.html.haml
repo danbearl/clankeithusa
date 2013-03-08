@@ -1,0 +1,14 @@
+.span9
+  %p
+    :markdown
+      #{page.body}
+  %table.table.table-striped
+    %tr
+      %th Title
+      %th Description
+
+    - page.documents.each do |document|
+      %tr
+        =link_to document.name, document.file_url
+      %tr
+        = document.description
