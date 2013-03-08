@@ -20,8 +20,9 @@ Feature: Pages
 
 	Scenario: Edit Page
 		Given the following page:
-			| name | about                   |
-			| body | This is the about page. |
+			| name     | about                   |
+			| body     | This is the about page. |
+      | category | text                    |
 		And I am on that page.
 		When I follow "Edit"
 		And I fill in the following:
@@ -32,8 +33,33 @@ Feature: Pages
 
 	Scenario: Delete Page
 		Given the following page:
-			| name | about                   |
-			| body | This is the about page. |
+			| name     | about                   |
+			| body     | This is the about page. |
+      | category | text                    |
 		And I am on that page.
     When I follow "Delete"
 		Then I should see "Page successfully deleted."
+
+  Scenario: Gallery Page
+    Given the following page:
+      | name     | gallery              |
+      | body     | A fun little gallery |
+      | category | gallery              |
+    And the following image:
+      | name    | test image |
+      | page_id | 1          |
+    And I am on that page.
+    Then I should see "A fun little gallery"
+    And I should see "test image"
+
+  Scenario: Archive Page
+    Given the following page:
+      | name     | archive              |
+      | body     | A fun little archive |
+      | category | archive              |
+    And the following document:
+      | name    | Issue 1 |
+      | page_id | 1       |
+    And I am on that page.
+    Then I should see "Issue 1"
+    

@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
   has_many :blurbs
   has_many :documents
   
-  attr_accessible :body, :name, :slug, :parent_id, :public, :priority
+  attr_accessible :body, :name, :slug, :parent_id, :public, :priority, :category
 
   default_scope order('created_at DESC, updated_at DESC')
 

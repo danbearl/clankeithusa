@@ -1,7 +1,6 @@
-- model_class = Page
 .row
   .span9
-    %h1=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human, :default => "Edit #{model_class.model_name.human}")
+    %h1 Edit Page
 
     =link_to raw("<i class='icon-picture'></i> Images"), "#", rel: "show-image-select"
 
@@ -11,22 +10,18 @@
 
 .image-pane.span9
   .close
-
     =link_to raw("<i class='icon-remove'></i>"), "#", rel: "show-image-select"
 
   .accordion#accordion2
-
     - images.each do |i|
       
       .accordion-group
         .accordion-heading
-
           = link_to i.name, "#collapse_#{i.id}", 'data-toggle' => "collapse", class: "accordion-toggle", 'data-parent' => "#accordion2"
 
         .accordion-body.collapse{ :id => "collapse_#{i.id}" }
           .accordion-inner
-
             = image_tag(i.picture_url(:thumb))
-            = link_to t('.edit', default: "Edit"), edit_image_path(i), class: 'btn'
+            = link_to "Edit", edit_image_path(i), class: 'btn'
             %br
             = "<img src='#{i.picture_url(:thumb)}' class='img-polaroid'>"

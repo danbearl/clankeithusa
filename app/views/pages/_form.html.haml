@@ -16,6 +16,10 @@
   .controls
     = f.text_field :priority, class: "input-mini"
 .control-group
+  = f.label :category
+  .controls
+    = f.select(:category, options_for_select([["Text","text"],["Section","section"],["Image Gallery","gallery"],["Document Archive","archive"]], page.category))
+.control-group
   = f.label :parent_id
   .controls
     - @pages_array = []

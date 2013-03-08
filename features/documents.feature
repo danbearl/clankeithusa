@@ -12,7 +12,7 @@ Feature: Documents
       | body | test |
 
   Scenario: Create a document
-    Given I am on that page
+    Given I am on that page.
     When I follow "Add Document"
     And I fill in the following:
       | document_name        | Issue 1               |
@@ -20,3 +20,24 @@ Feature: Documents
     And I press "Save"
     Then I should see "Document successfully created"
     And I should see "Issue 1"
+
+  Scenario: Update a document
+    Given the following document:
+      | name        | Issue 1               |
+      | description | Our very first issue! |
+    And I am on that page.
+    When I follow "Edit Document"
+    And I fill in the following:
+      | document_description | A very rad read! |
+    And I press "Update Document"
+    Then I should see "Document successfully updated."
+    And I should see "A very rad read!"
+
+  Scenario: Delete a document
+    Given the following document:
+      | name        | Issue 1               |
+      | description | Our very first issue! |
+    And I am on that page.
+    When I follow "Delete Document"
+    Then I should see "Document successfully deleted."
+    And I should not see "Our very first issue!"
