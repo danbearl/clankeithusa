@@ -46,4 +46,6 @@ group :test do
   gem 'dirty'
   gem 'nyan-cat-formatter'
   gem 'rspec-rails', '~> 2.13.0'
+  gem 'timecop'
+  gem 'chronic'
 end

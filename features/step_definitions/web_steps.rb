@@ -52,12 +52,16 @@ Given /^I am on the announcements index page$/ do
   visit announcements_path
 end
 
-Given /^I am on the events page$/ do
+Given /^I am on the events page\.$/ do
   visit events_path
 end
 
 Given /^I am on the comments page$/ do
   visit comments_path
+end
+
+Given /^the date is "(.*?)"$/ do |date|
+  Timecop.travel Chronic.parse("#{date} at noon")
 end
 
 # Whens
