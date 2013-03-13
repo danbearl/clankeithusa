@@ -4,11 +4,13 @@ class ImagesController < ApplicationController
 
   expose(:images)
   expose(:image) 
-  expose(:owner) { Page.find(image.page_id) }
+  expose(:page) { Page.find(params[:page_id]) }
+  expose(:owner) { Page.find(image.page_id||@new_image.page_id) }
 
   def create
-    if image.save
-      if image.page_id != 0 and image.page_id != nil
+    @new_image = page.images.new(params[:image])
+    if @new_image.save
+      if @new_image.page_id != 0 and @new_image.page_id != nil
         redirect_to slug_path(owner.slug), notice: "Image successfully updated."
       else
         redirect_to images_path, notice: "Image succesfully updated."
