@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
     @new_image = page.images.new(params[:image])
     if @new_image.save
       if @new_image.page_id != 0 and @new_image.page_id != nil
-        redirect_to slug_path(owner.slug), notice: "Image successfully updated."
+        redirect_to slug_path(owner.slug), notice: "Image successfully uploaded."
       else
         redirect_to images_path, notice: "Image succesfully updated."
       end

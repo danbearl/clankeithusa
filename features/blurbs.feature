@@ -6,14 +6,14 @@ Feature: Blurbs
       | password              | pass            |
       | password_confirmation | pass            |
       | admin                 | true            |
-    And that user is logged in.
+    And that user is logged in
     And the following page:
       | name     | test |
       | body     | test |
       | category | text |
 
   Scenario: Create new blurb
-    Given I am on that page.
+    Given I am on that page
     And I follow "Add Blurb"
     And I fill in the following:
       | blurb_name | blurb        |
@@ -27,7 +27,7 @@ Feature: Blurbs
       | name    | blurb        |
       | body    | sample blurb |
       | page_id | 1            |
-    And I am on that page.
+    And I am on that page
     And I follow "Edit Blurb"
     And I fill in the following:
       | blurb_body | changed content |
@@ -40,7 +40,7 @@ Feature: Blurbs
       | name    | blurb        |
       | body    | sample blurb |
       | page_id | 1            |
-    Given I am on that page.
+    Given I am on that page
     And I follow "Delete Blurb"
     Then I should see "blurb was deleted."
     And I should not see "sample blurb"

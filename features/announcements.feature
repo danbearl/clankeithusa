@@ -6,7 +6,7 @@ Feature: Announcements
       | password              | pass            |
       | password_confirmation | pass            |
       | admin                 | true            |
-    And that user is logged in.
+    And that user is logged in
 
   Scenario: Create a new announcement
     Given I am on the new announcement page
@@ -52,7 +52,7 @@ Feature: Announcements
       | name       | test          |
       | live       | true          |
       | site_wide  | false         |
-    And I am on the home page.
+    And I am on the home page
     Then I should see "announcement!"
 
   Scenario: Announcement not live
@@ -61,5 +61,5 @@ Feature: Announcements
       | name       | test          |
       | live       | false         |
       | site_wide  | false         |
-    And I am on the home page.
+    And I am on the home page
     Then I should not see "announcement!"

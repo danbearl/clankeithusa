@@ -7,7 +7,7 @@ Feature: Cart
       | sizes       | xs,s,m,l,xl                  |
 
   Scenario: Add product to cart
-    Given I am on that product's page.
+    Given I am on that product's page
     When I fill in the following:
       | quantity | 2 |
     And I press "Add To Cart"
@@ -17,7 +17,7 @@ Feature: Cart
     And I should see "Total: $17.85"
 
   Scenario: Remove item from cart
-    Given I am on that product's page.
+    Given I am on that product's page
     When I fill in the following:
       | quantity | 2 |
     And I press "Add To Cart"

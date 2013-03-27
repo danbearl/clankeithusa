@@ -6,10 +6,10 @@ Feature: Comments
       | password              | pass            |
       | password_confirmation | pass            |
       | admin                 | true            |
-    And that user is logged in.
+    And that user is logged in
 
   Scenario: Create new comment
-    Given I am on the home page.
+    Given I am on the home page
     When I follow "Comments"
     And I follow "click here"
     And I fill in the following:

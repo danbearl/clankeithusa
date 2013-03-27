@@ -6,14 +6,14 @@ Feature: Image
       | password              | pass            |
       | password_confirmation | pass            |
       | admin                 | true            |
-    And that user is logged in.
+    And that user is logged in
     And the following page:
       | name     | test    |
       | body     | test    |
       | category | gallery |
 
   Scenario: Create new image
-    Given I am on that page.
+    Given I am on that page
     When I follow "Add Image"
     And I fill in the following:
       | image_name        | castle                |
@@ -29,7 +29,7 @@ Feature: Image
       | priority    | 1                     |
       | description | a picture of a castle |
       | page_id     | 1                     |
-    And I am on that page.
+    And I am on that page
     When I follow "Edit Image"
     And I fill in the following:
       | image_name | Castle |
@@ -43,7 +43,7 @@ Feature: Image
       | priority    | 1                     |
       | description | a picture of a castle |
       | page_id     | 1                     |
-    And I am on that page.
+    And I am on that page
     When I follow "Delete Image"
     Then I should see "Image successfully deleted."
     And I should not see "castle"

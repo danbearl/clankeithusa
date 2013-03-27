@@ -6,10 +6,10 @@ Feature: Pages
 			| password              | pass            |
       | password_confirmation | pass            |
       | admin                 | true            |
-		And that user is logged in.
+		And that user is logged in
 
 	Scenario: Create New Page
-		Given I am on the pages index.
+		Given I am on the pages index
 		When I follow "New Page"
 		And I fill in the following:
 			| page_name | about                   |
@@ -23,7 +23,7 @@ Feature: Pages
 			| name     | about                   |
 			| body     | This is the about page. |
       | category | text                    |
-		And I am on that page.
+		And I am on that page
 		When I follow "Edit"
 		And I fill in the following:
 			| page_body | This is the updated about page. |
@@ -36,7 +36,7 @@ Feature: Pages
 			| name     | about                   |
 			| body     | This is the about page. |
       | category | text                    |
-		And I am on that page.
+		And I am on that page
     When I follow "Delete"
 		Then I should see "Page successfully deleted."
 
@@ -48,7 +48,7 @@ Feature: Pages
     And the following image:
       | name    | test image |
       | page_id | 1          |
-    And I am on that page.
+    And I am on that page
     Then I should see "A fun little gallery"
     And I should see "test image"
 
@@ -60,6 +60,5 @@ Feature: Pages
     And the following document:
       | name    | Issue 1 |
       | page_id | 1       |
-    And I am on that page.
+    And I am on that page
     Then I should see "Issue 1"
-    

@@ -6,11 +6,11 @@ Feature: Event
       | password              | pass            |
       | password_confirmation | pass            |
       | admin                 | true            |
-    And that user is logged in.
+    And that user is logged in
 
   Scenario: Create an event
     Given the date is "2013-03-11"
-    And I am on the events page.
+    And I am on the events page
     When I follow "New"
     And I fill in the following:
       | event_title       | meeting                |
@@ -29,7 +29,7 @@ Feature: Event
       | description | Be there or be square |
       | starts_at   | 2013-03-11            |
       | ends_at     | 2013-03-11            |
-    And I am on the events page.
+    And I am on the events page
     When I follow "Edit"
     And I fill in the following:
       | event_description | Bring your own food. |
@@ -44,7 +44,7 @@ Feature: Event
       | description | Be there or be square |
       | starts_at   | 2013-03-11            |
       | ends_at     | 2013-03-11            |
-    And I am on the events page.
+    And I am on the events page
     When I follow "Destroy"
     Then I should see "Event successfully deleted."
     And I should not see "Be there or be square"
@@ -56,7 +56,7 @@ Feature: Event
       | description | Be there or be square |
       | starts_at   | 2013-03-11            |
       | ends_at     | 2013-03-11            |
-    And I am on the events page.
+    And I am on the events page
     Then I should not see "Be there or be square"
 
   Scenario: Change filtered date range
@@ -66,7 +66,7 @@ Feature: Event
       | description | Be there or be square |
       | starts_at   | 2013-03-11            |
       | ends_at     | 2013-03-11            |
-    And I am on the events page.
+    And I am on the events page
     When I fill in the following:
       | start | 2013-03-01 |
       | end   | 2013-03-30 |
