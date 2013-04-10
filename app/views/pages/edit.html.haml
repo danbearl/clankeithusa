@@ -21,7 +21,7 @@
 
         .accordion-body.collapse{ :id => "collapse_#{i.id}" }
           .accordion-inner
-            - if !image.picture_url(:thumb).blank?
+            - if !i.picture_url(:thumb).blank?
               = image_tag(i.picture_url(:thumb))
             = link_to "Edit", edit_image_path(i), class: 'btn'
             %br
