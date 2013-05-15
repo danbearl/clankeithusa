@@ -8,4 +8,4 @@
     = f.text_area :body, class: "input-large"
 .form-actions
   = f.submit nil, class: 'btn btn-primary'
-  = link_to t('.cancel', default: "Cancel"), slug_path(Page.find(params[:page_id]).slug), class: 'btn'
+  = link_to t('.cancel', default: "Cancel"), blurbs_path, class: 'btn'

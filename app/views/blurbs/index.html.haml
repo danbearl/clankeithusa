@@ -1,2 +1,20 @@
-%h1 Blurbs#index
-%p Find me in app/views/blurbs/index.html.haml
+.row
+  .offset3.span6
+    %h1 Blurbs
+.row
+  .offset3.span6
+    = link_to "New Blurb", new_blurb_path, class: "btn btn-primary"
+
+.row
+  .offset3.span6
+    %table.table.table-striped
+      %tbody
+        %tr
+          %th Name
+          %th Actions
+        - blurbs.each do |blurb|
+          %tr
+            %td= blurb.name
+            %td
+              = link_to "Edit", edit_blurb_path(blurb), class: "btn btn-primary btn-mini"
+              = link_to "Destroy", blurb, method: :destroy, confirm: "Are you sure?", class: "btn btn-danger btn-mini"

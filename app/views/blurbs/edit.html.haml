@@ -2,5 +2,4 @@
   %h1 Edit Blurb
 
 = form_for blurb, builder: Formal::Builder do |f|
-  = f.hidden_field :page_id, value: params[:page_id]
   = render partial: "form", locals: { f: f }

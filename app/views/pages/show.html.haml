@@ -17,13 +17,11 @@
   = render partial: page.category
 
   .span3.sidebar
-    - blurbs.each do |blurb|
+    - page.blurbs.each do |blurb|
       .blurb
         :markdown
           #{blurb.body}
-        -if user_is_admin?
-          = link_to "Edit Blurb", edit_blurb_path(blurb.id, page_id: page.id), class: 'btn btn-mini'
-          = link_to "Delete Blurb", page_blurb_path(page.id,blurb.id), method: :delete, confirmation: "Are you sure?", class: 'btn btn-mini btn-danger'
+        %hr
 
 - if user_is_admin?
   .row
@@ -34,4 +32,4 @@
       = link_to "Delete", slug_path(page.slug), method: :post, confirm: 'Are you sure?', :class => 'btn btn-danger'
       = link_to "Add Image", new_page_image_path(page.id), class: 'btn btn-primary'
       = link_to "Add Document", new_document_path(page_id: page.id), class: 'btn btn-primary'
-      = link_to "Add Blurb", new_page_blurb_path(page.id), class: 'btn btn-primary'
+      = link_to "Add Blurb", new_page_blurb_association_path(page.id), class: 'btn btn-primary'
