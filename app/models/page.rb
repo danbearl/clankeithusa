@@ -4,10 +4,13 @@ class Page < ActiveRecord::Base
     foreign_key: "parent_id"
   belongs_to :parent, class_name: "Page"
   has_many :images
-  has_many :blurbs
+  has_many :blurb_associations, dependent: :destroy
+  has_many :blurbs, through: :blurb_associations
   has_many :documents
   
-  attr_accessible :body, :name, :slug, :parent_id, :public, :priority, :category
+  accepts_nested_attributes_for :blurb_associations, reject_if: lambda { |a| a[:blurb_id].blank? }, allow_destroy: true
+
+  attr_accessible :body, :name, :slug, :parent_id, :public, :priority, :category, :blurb_associations_attributes
 
   default_scope order('created_at DESC, updated_at DESC')
 

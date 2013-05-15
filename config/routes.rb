@@ -14,6 +14,7 @@ Clankeithusa::Application.routes.draw do
   resource :join
   resources :announcements
   resources :blurbs
+  resources :blurb_associations
   resources :comments
   resources :documents
   resources :events
@@ -27,7 +28,7 @@ Clankeithusa::Application.routes.draw do
 
   resources :pages, only: [:new, :create, :index] do
     resources :images
-    resources :blurbs
+    resources :blurb_associations
     resources :documents
   end
 

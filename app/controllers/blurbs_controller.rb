@@ -3,13 +3,12 @@ class BlurbsController < ApplicationController
   before_filter :require_admin
 
   expose(:blurb)
-  expose(:page) { Page.find(blurb.page_id || params[:page_id]) }
-  expose(:new_blurb) { page.blurbs.create(params[:blurb]) }
+  expose(:blurbs)
 
   def create
 
-    if new_blurb.save
-      redirect_to slug_path(page.slug), notice: "Blurb successfully created."
+    if blurb.save
+      redirect_to blurbs_path, notice: "Blurb successfully created."
     else
       render 'new'
     end
@@ -18,7 +17,7 @@ class BlurbsController < ApplicationController
   def update
     if blurb.save
 
-      redirect_to slug_path(page.slug), notice: "Blurb successfully updated."
+      redirect_to blurbs_path, notice: "Blurb successfully updated."
     else
       render 'edit'
     end
@@ -26,6 +25,6 @@ class BlurbsController < ApplicationController
 
   def destroy
     blurb.destroy
-    redirect_to slug_path(page.slug), notice: "#{blurb.name} was deleted."
+    redirect_to blurbs_path, notice: "#{blurb.name} was deleted."
   end
 end
