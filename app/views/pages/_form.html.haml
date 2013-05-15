@@ -15,6 +15,15 @@
   = f.label :priority
   .controls
     = f.text_field :priority, class: "input-mini"
+
+%fieldset
+  - @i = 0
+  = f.fields_for :blurb_associations do |builder|
+    = render partial: "blurb_association_fields", locals: { f: builder, i: @i }
+    - @i += 1
+  %p
+    = link_to_add_fields("Add Blurb", f, :blurb_associations)
+
 .control-group
   = f.label :category
   .controls
