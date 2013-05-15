@@ -1,0 +1,14 @@
+.fields
+  - if defined? i
+    - default_id = page.blurb_associations[i].blurb_id
+  - else
+    - default_id = nil
+    
+  = f.label :blurb_id, "Blurb"
+  - @blurbs_array = []
+  - @blurbs_array << [ '', nil ]
+  - @blurbs_array.concat Blurb.all.map { |blurb| [blurb.name, blurb.id] }
+  = f.select(:blurb_id, options_for_select(@blurbs_array, default_id))
+  %p
+    = link_to_remove_fields("Remove Blurb", f)
+
