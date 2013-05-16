@@ -1,22 +1,21 @@
-.span9
-  %p
-    :markdown
-      #{page.body}
-  %table.table.table-striped
-    %tr
-      %th Title
-      %th Description
-      - if user_is_admin?
-        %th Admin Actions
+%p
+  :markdown
+    #{page.body}
+%table.table.table-striped
+  %tr
+    %th Title
+    %th Description
+    - if user_is_admin?
+      %th Admin Actions
 
-    - page.documents.each do |document|
-      %tr
+  - page.documents.each do |document|
+    %tr
+      %td
+        =link_to document.name, document.file_url
+      %td
+        = document.description
+      - if user_is_admin?
         %td
-          =link_to document.name, document.file_url
-        %td
-          = document.description
-        - if user_is_admin?
-          %td
-            = link_to "Edit Document", edit_document_path(document.id, page_id: page.id)
-            |
-            = link_to "Delete Document", document_path(document.id), method: :delete, confirm: "Are you sure?"
+          = link_to "Edit Document", edit_document_path(document.id, page_id: page.id)
+          |
+          = link_to "Delete Document", document_path(document.id), method: :delete, confirm: "Are you sure?"

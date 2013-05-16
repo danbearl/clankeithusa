@@ -10,5 +10,5 @@
   - @blurbs_array.concat Blurb.all.map { |blurb| [blurb.name, blurb.id] }
   = f.select(:blurb_id, options_for_select(@blurbs_array, default_id))
   %p
-    = link_to_remove_fields("Remove Blurb", f)
+    = link_to_remove_fields("Remove Blurb", f, class: 'btn btn-danger btn-mini')
 

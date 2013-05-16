@@ -1,12 +1,11 @@
-.span9
-  %p 
-    :markdown
-      #{page.body}
-  - page.images.each do |image|
-    .image.float-left
-      = link_to image_tag(image.picture_url(:thumb), class: 'img-polaroid'), image.picture_url
-      %br
-      = image.name
-      -if user_is_admin?
-        = link_to "Edit Image", edit_page_image_path(page.id, image.id), class: 'btn'
-        = link_to "Delete Image", image, method: :delete, class: 'btn btn-danger'
+%p 
+  :markdown
+    #{page.body}
+- page.images.each do |image|
+  .image.float-left
+    = link_to image_tag(image.picture_url(:thumb), class: 'img-polaroid'), image.picture_url
+    %br
+    = image.name
+    -if user_is_admin?
+      = link_to "Edit Image", edit_page_image_path(page.id, image.id), class: 'btn btn-primary btn-mini'
+      = link_to "Delete Image", image, method: :delete, class: 'btn btn-danger btn-mini'

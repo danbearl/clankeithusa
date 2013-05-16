@@ -2,7 +2,7 @@
   .span9
     %h1 Edit Page
 
-    =link_to raw("<i class='icon-picture'></i> Images"), "#", rel: "show-image-select"
+    =link_to raw("<i class='icon-picture'></i> Images"), "#", rel: "show-image-select", class: 'btn'
 
     = form_for page, url: slug_path(page.slug), builder: Formal::Builder do |f|
       = render partial: "form", locals: { f:f }

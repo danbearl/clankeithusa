@@ -9,14 +9,14 @@
                 - if p.public or current_user
                   %li= link_to(p.name, slug_path(p.slug))
 
-.page-header
+.page-header.text-center
   %h1=t '.title', :default => page.name
 
 .row
+  .offset1.span7
+    = render partial: page.category
 
-  = render partial: page.category
-
-  .span3.sidebar
+  .span3
     - page.blurbs.each do |blurb|
       .blurb
         :markdown
@@ -32,4 +32,3 @@
       = link_to "Delete", slug_path(page.slug), method: :post, confirm: 'Are you sure?', :class => 'btn btn-danger'
       = link_to "Add Image", new_page_image_path(page.id), class: 'btn btn-primary'
       = link_to "Add Document", new_document_path(page_id: page.id), class: 'btn btn-primary'
-      = link_to "Add Blurb", new_page_blurb_association_path(page.id), class: 'btn btn-primary'
