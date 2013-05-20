@@ -72,5 +72,21 @@
       .row
         .span12
           = yield
-      .footer
-          
+      .row
+        .span12
+          %footer.text-center
+            %hr
+            %p
+              = link_to "Home", :root
+              |
+              = link_to "Join", '/join'
+              |
+              = link_to "Calendar", events_path
+              |
+              = link_to "Store", products_path
+              |
+              - if current_user
+                = link_to "Log Out", '/log_out'
+              - else
+                = link_to "Log In", '/log_in'
+            %p All content &copy; Clan Keith USA, INC 2013
