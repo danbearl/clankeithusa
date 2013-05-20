@@ -1,25 +1,23 @@
-= form_for image, url: { action: "create" }, html: { multipart: true }  do |f|
-  - if image.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(image.errors.count, "error")} prohibited this image from being saved:"
-      %ul
-        - image.errors.full_messages.each do |msg|
-          %li= msg
-  = hidden_field_tag :page_id, value: params[:page_id]
+.control-group
+  = f.label :name
+  .controls
+    = f.text_field :name, class: "span6"
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :picture
-    = f.text_field :picture
-  .field
-    = f.label :priority
-    = f.number_field :priority
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.file_field :picture
-  .actions
-    = f.submit 'Save'
+.control-group
+  = f.label :priority
+  .controls
+    = f.number_field :priority, class: "span6"
+
+.control-group
+  = f.label :description
+  .controls
+    = f.text_area :description, rows: "4", class: "span6"
+
+.control-group
+  = f.file_field :picture
+
+.control-group
+  = f.label :featured
+  .controls
+    = f.check_box :featured
+
