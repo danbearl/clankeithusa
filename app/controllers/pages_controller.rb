@@ -6,6 +6,15 @@ class PagesController < ApplicationController
   expose(:images) { page.images }
   expose(:blurb_associations) { page.blurb_associations }
   expose(:sub_pages) {page.sub_pages.reorder(:priority) }
+  expose(:top_pages) { Page.where(parent_id: 0) }
+
+  def show
+    if page.category == 'section'
+      if !page.sub_pages.blank?
+        redirect_to slug_path(sub_pages.first.slug)
+      end
+    end
+  end
 
   def new
     page.blurb_associations.build
