@@ -9,8 +9,16 @@
                 - if p.public or current_user
                   %li= link_to(p.name, slug_path(p.slug))
 
-.page-header.text-center
-  %h1=t '.title', :default => page.name
+.row
+  .offset1.span10
+    %ul.breadcrumb
+      - if !page.parent_id.nil_or_zero?
+        = raw page.breadcrumbs
+      %li.active= page.name
+
+.row
+  .offset3.span6.text-center
+    %h1=t '.title', :default => page.name
 
 .row
   .offset1.span7

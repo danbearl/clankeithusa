@@ -20,7 +20,7 @@ Given "I am on that product's page" do
 end
 
 Given "I am on that page" do
-  visit "/#{@page.name}/"
+  visit "/#{@page.slug}/"
 end
 
 Given "I am on the log in page" do

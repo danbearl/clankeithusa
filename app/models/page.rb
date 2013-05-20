@@ -31,4 +31,17 @@ class Page < ActiveRecord::Base
   def update_slug
    self.slug = name.parameterize
   end
+
+  def breadcrumbs(first = true)
+    if first
+      return Page.find(parent_id).breadcrumbs(false)
+    end
+
+    if !self.parent_id.nil_or_zero?
+      return Page.find(parent_id).breadcrumbs(false) + %Q{<li><a href="/#{self.slug}">#{self.name}</a><span class="divider">/</span></li>}
+    end
+
+    return %Q{<li><a href="/#{self.slug}">#{self.name}</a><span class="divider">/</span></li>}
+
+  end
 end
