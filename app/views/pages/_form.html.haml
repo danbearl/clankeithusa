@@ -31,10 +31,7 @@
 .control-group
   = f.label :parent_id
   .controls
-    - @pages_array = []
-    - @pages_array << ["None", 0]
-    - @pages_array.concat Page.all.map {|page| [page.name, page.id]}
-    = f.select(:parent_id, options_for_select(@pages_array, page.parent_id))
+    = f.select(:parent_id, options_for_select(pages_array_for_select, page.parent_id))
 .form-actions
   = f.submit nil, :class => 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), pages_path, :class => 'btn'
