@@ -34,4 +34,26 @@ module PagesHelper
     return str
   end
 
+  def pages_array_for_select
+    arry = []
+    arry << ["None", 0]
+    Page.where('parent_id == 0').each do |section|
+      arry << [section.name.upcase, section.id]
+      arry.concat( build_array section.sub_pages, 1 )
+    end
+    
+    return arry
+  end
+
+  def build_array(pages, depth = 0)
+    arry = []
+    pages.each do |page|
+      arry << ["#{depth_count(depth)}#{page.name}", page.id]
+      if page.sub_pages.count > 0
+        arry.concat(build_array(page.sub_pages, depth + 1))
+      end
+    end
+    return arry
+  end
+
 end
