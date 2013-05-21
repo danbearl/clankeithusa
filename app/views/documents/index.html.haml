@@ -1,2 +1,25 @@
-%h1 Documents#index
-%p Find me in app/views/documents/index.html.haml
+%h1 Listing Documents
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Description
+    %th File
+    %th Owner
+    %th
+    %th
+    %th
+
+  - documents.each do |document|
+    %tr
+      %td= document.name
+      %td= document.description
+      %td= document.file_url
+      %td= document.owner
+      %td= link_to t('.show', default: 'Show'), document, class: 'btn btn-mini'
+      %td= link_to t('.edit', default: 'Edit'), edit_document_path(document), class: 'btn btn-mini'
+      %td= link_to t('.destroy', default: 'Destroy'), document, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+
+%br
+
+= link_to t('.new', default: 'New Image'), new_document_path, class: 'btn btn-primary'

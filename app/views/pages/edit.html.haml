@@ -3,12 +3,13 @@
     %h1 Edit Page
 
     =link_to raw("<i class='icon-picture'></i> Images"), "#", rel: "show-image-select", class: 'btn'
+    =link_to raw("<i class='icon-file'></i> Documents"), "#", rel: "show-document-select", class: 'btn'
 
     = form_for page, url: slug_path(page.slug), builder: Formal::Builder do |f|
       = render partial: "form", locals: { f:f }
 
 
-.image-pane.span9
+.select-pane.span6#image-pane
   .close
     =link_to raw("<i class='icon-remove'></i>"), "#", rel: "show-image-select"
 
@@ -26,3 +27,18 @@
             = link_to "Edit", edit_image_path(i), class: 'btn'
             %br
             = "<img src='#{i.picture_url(:thumb)}' class='img-polaroid'>"
+
+.select-pane.span6#document-pane
+  .close
+    =link_to raw("<i class='icon-remove'></i>"), "#", rel: "show-document-select"
+
+  .accordion#docs
+    - page.documents.each do |d|
+      
+      .accordion-group
+        .accordion-heading
+          = link_to d.name, "#collapse_#{d.id}", 'data-toggle' => "collapse", class: "accordion-toggle", 'data-parent' => "#docs"
+
+        .accordion-body.collapse{ :id => "collapse_#{d.id}" }
+          .accordion-inner
+            = "[#{d.name}](#{d.file_url})"

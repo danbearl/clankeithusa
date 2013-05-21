@@ -12,7 +12,9 @@
           %ul
             - image.errors.full_messages.each do |msg|
               %li= msg
+
       = render partial: "form", locals: { f: f }
+
       .form-actions
         = f.submit 'Save'
 

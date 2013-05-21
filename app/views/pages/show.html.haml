@@ -9,6 +9,17 @@
                 - if p.public or current_user
                   %li= link_to(p.name, slug_path(p.slug))
 
+- if user_is_admin?
+  .row
+    .span12
+      Admin Actions:
+      = link_to "New Page", new_page_path(parent_id: page.id), :class => 'btn btn-primary'
+      = link_to "Edit", edit_slug_path(page.slug, parent_id: page.parent_id), :class => 'btn'
+      = link_to "Delete", slug_path(page.slug), method: :post, confirm: 'Are you sure?', :class => 'btn btn-danger'
+      = link_to "Add Image", new_page_image_path(page.id), class: 'btn btn-primary'
+      = link_to "Add Document", new_page_document_path(page.id), class: 'btn btn-primary'
+      %hr
+
 .row
   .offset1.span10
     %ul.breadcrumb
@@ -30,13 +41,3 @@
         :markdown
           #{blurb.body}
         %hr
-
-- if user_is_admin?
-  .row
-    .span12
-      Admin Actions:
-      = link_to "New Page", new_page_path(parent_id: page.id), :class => 'btn btn-primary'
-      = link_to "Edit", edit_slug_path(page.slug, parent_id: page.parent_id), :class => 'btn'
-      = link_to "Delete", slug_path(page.slug), method: :post, confirm: 'Are you sure?', :class => 'btn btn-danger'
-      = link_to "Add Image", new_page_image_path(page.id), class: 'btn btn-primary'
-      = link_to "Add Document", new_document_path(page_id: page.id), class: 'btn btn-primary'

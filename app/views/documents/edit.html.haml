@@ -1,35 +1,28 @@
-%h1 Edit Document
+.row
+  .offset3.span6.text-center
+    %h1 Edit Document
 
-= form_for document, html: {multipart: true } do |f|
-  - if document.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(document.errors.count, "error")} prohibited this document from being saved:"
-      %ul
-        - document.errors.full_messages.each do |msg|
-          %li= msg
+.row
+  .offset3.span6
+    = form_for document, html: {multipart: true } do |f|
+      - if document.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(document.errors.count, "error")} prohibited this document from being saved:"
+          %ul
+            - document.errors.full_messages.each do |msg|
+              %li= msg
 
-  .control-group
-    = f.label :name
-    .controls
-      = f.text_field :name
+      = render partial: "form", locals: { f: f }
 
-  .control-group
-    = f.label :description
-    .controls
-      = f.text_area :description
+      .control-group
+        = f.label :page_id, "Parent Page"
+        .controls
+          - @select_options = []
+          - @select_options << ["None", 0]
+          - @select_options.concat Page.all.map {|page| [page.name, page.id] }
+          = f.select(:page_id, options_for_select(@select_options, document.page_id))
 
-  .control-group
-    = f.file_field :file
+      .form-actions
+        = f.submit 'Update Document'
 
-  .control-group
-    = f.label 'Parent Page', :page_id
-    .controls
-      - @select_options = []
-      - @select_options << ["None", 0]
-      - @select_options.concat Page.all.map {|page| [page.name, page.id] }
-      = f.select(:page_id, options_for_select(@select_options, document.page_id))
-
-  .form-actions
-    = f.submit 'Update Document'
-
-= link_to 'Back', images_path
+    = link_to 'Back', images_path
