@@ -1,0 +1,12 @@
+.control-group
+  = f.label :name
+  .controls
+    = f.text_field :name, class: "span6"
+
+.control-group
+  = f.label :description
+  .controls
+    = f.text_area :description, rows: "4", class: "span6"
+
+.control-group
+  = f.file_field :file
