@@ -37,7 +37,7 @@ module PagesHelper
   def pages_array_for_select
     arry = []
     arry << ["None", 0]
-    Page.where('parent_id == 0').each do |section|
+    Page.where(parent_id: 0).each do |section|
       arry << [section.name.upcase, section.id]
       arry.concat( build_array section.sub_pages, 1 )
     end
