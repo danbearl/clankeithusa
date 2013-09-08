@@ -6,14 +6,13 @@ Clankeithusa::Application.routes.draw do
   get 'comments/:id/approve' => 'comments#approve'
   match "order/payment" => "orders#payment"
   get "cart" => "cart#show", as: "cart"
-  match "join" => "join#new", as: "join", via: :get
-  match "join" => "join#create", as: "join", via: :post
+  match "join" => "applicants#new", as: "join", via: :get
+  match "join" => "applicants#create", as: "join", via: :post
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
 
-  resource :join
   resources :announcements
-  resources :blurbs
+  resources :applicants
   resources :blurb_associations
   resources :comments
   resources :documents

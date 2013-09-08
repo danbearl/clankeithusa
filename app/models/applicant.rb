@@ -1,7 +1,4 @@
-class Applicant
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+class Applicant < ActiveRecord::Base
 
   attr_accessor :type, :address, :city, :state, :zip, :email, 
                 :applicant_first_name, :applicant_last_name, :applicant_birth_date, :applicant_birth_place, 
@@ -43,15 +40,5 @@ class Applicant
                 :ancestor_5_marriage_date, :ancestor_5_marriage_place, 
                 :ancestor_5b_first_name, :ancestor_5b_last_name, :ancestor_5b_birth_date, 
                 :ancestor_5b_birth_place, :ancestor_5b_death_date, :ancestor_5b_death_place
-
-  def initialize(attributes = {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
-    end
-  end
-
-  def persisted?
-    false
-  end
 
 end
