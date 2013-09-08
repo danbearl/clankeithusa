@@ -14,6 +14,7 @@ Clankeithusa::Application.routes.draw do
   resources :announcements
   resources :applicants
   resources :blurb_associations
+  resources :blurbs
   resources :comments
   resources :documents
   resources :events
