@@ -50,68 +50,54 @@
       = hidden_field_tag :stripe_card_token
       = f.hidden_field :products, value: Order.pack_products(session[:cart])
       
-      %dt
+      .control-group
         #first_name_error.text-error
         = f.label :customer_first_name, "First Name"
-      %dd
-        = f.text_field :customer_first_name
+        .controls
+          = f.text_field :customer_first_name
 
-      %dt
+      .control-group
         #last_name_error.text-error
         = f.label :customer_last_name, "Last Name"
-      %dd
-        = f.text_field :customer_last_name
+        .controls
+          = f.text_field :customer_last_name
       
-      %dt
+      .control-group
         #email_error.text-error
         = f.label :email, "E-Mail"
-      %dd
-        = f.text_field :email
+        .controls
+          = f.text_field :email
      
-      %dt
+      .control-group
         #address_street_error.text-error
         = f.label :address_street_1, "Street 1"
-      %dd
-        = f.text_field :address_street_1
+        .controls
+          = f.text_field :address_street_1
 
-      %dt
+      .control-group
         = f.label :address_street_2, "Street 2"
-      %dd
-        = f.text_field :address_street_2
+        .controls
+          = f.text_field :address_street_2
 
-      %dt
+      .control-group
         #address_city_error.text-error
         = f.label :address_city, "City"
-      %dd
-        = f.text_field :address_city
+        .controls
+          = f.text_field :address_city
 
-      %dt
+      .control-group
         #address_state_error.text-error
         = f.label :address_state, "State"
-      %dd
-        = f.text_field :address_state, size: "2"
+        .controls
+          = f.text_field :address_state, size: "2"
 
-      %dt
+      .control-group
         #address_zip_error.text-error
         = f.label :address_zip, "Zip"
-      %dd
-        = f.text_field :address_zip
+        .controls
+          = f.text_field :address_zip
 
-      %dt
-        %label Card Number
-      %dd
-        %input{type: "text", size: "20", autocomplete: "off", id: "card_number"}
-
-      %dt
-        %label CVC
-      %dd
-        %input{type: "text", size: "4", autocomplete: "off", id: "card_code"}
-
-      %dt
-        = label_tag :card_month, "Card Expiration"
-      %dd
-        = select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}
-        = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}
+      = render "stripe"
 
       .action
         = f.submit "Place Order"
