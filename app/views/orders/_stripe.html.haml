@@ -1,0 +1,15 @@
+.control-group
+  %label Card Number
+  .controls
+    %input{type: "text", size: "20", autocomplete: "off", id: "card_number"}
+
+.control-group
+  %label CVC
+  .controls
+    %input{type: "text", size: "4", autocomplete: "off", id: "card_code"}
+
+.control-group
+  = label_tag :card_month, "Card Expiration"
+  .controls
+    = select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}
+    = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}
