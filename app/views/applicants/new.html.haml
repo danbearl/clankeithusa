@@ -1,0 +1,106 @@
+.page-header
+  %h1 Application For New Membership
+
+.row
+  .span12
+    %p 
+      Thank you for your interest in joining our society! We would like for you to complete
+      the following form. The first portion asks for personal/family information. Be sure
+      to indicate whether you are applying for a household, individual, or life-time 
+      individual membership. The second portion requests genealogical information which will
+      support your claim of kinship. If you need assistance with this form, please see
+      the resources listed in the genealogy section of our site or contact our Secretary
+      or your local convener.
+      
+= form_for applicant, html: { class: 'form-inline' } do |f|
+  .application-group#applicant-info
+    %h3 Applicant Information
+
+    .control-group
+      = f.label :type, "Membership Type", class: 'control-label'
+      .controls
+        =f.select :type, options_for_select(@options)
+
+    .horizontal-group
+      .control-group
+        = f.label :applicant_first_name, "First Name", class: 'control-label'
+        .controls
+          = f.text_field :applicant_first_name
+      .control-group
+        = f.label :applicant_last_name, "Last Name", class: 'control-label'
+        .controls
+          = f.text_field :applicant_last_name
+
+      .control-group
+        = f.label :applicant_birth_date, "Birth Date", class: 'control-label'
+        .controls
+          = f.text_field :applicant_birth_date
+      .control-group
+        = f.label :applicant_birth_place, "Birth Place", class: 'control-label'
+        .controls
+          = f.text_field :applicant_birth_place
+    
+    .horizontal-group
+      %h4 Address and Payment Information
+
+    .horizontal-group
+      .control-group
+        = f.label :address, "Street", class: 'control-label'
+        .controls
+          = f.text_field :address
+
+      .control-group
+        = f.label :city, "City", class: 'control-label'
+        .controls
+          = f.text_field :city
+
+      .control-group
+        = f.label :state, "State", class: 'control-label'
+        .controls
+          = f.text_field :state
+
+      .control-group
+        = f.label :zip, "Zip", class: 'control-label'
+        .controls
+          = f.text_field :zip
+
+      = render "orders/stripe"
+
+    .horizontal-group
+      .control-group
+        = f.label :email, "E-Mail", class: 'control-label'
+        .controls
+          = f.email_field :email
+
+    .horizontal-group
+
+  .application-group
+    %h3 Spouse Information
+
+    .horizontal-group
+      %h4 Marriage
+
+    .horizontal-group
+      .control-group
+        = f.label :applicant_marriage_date, "Marriage Date", class: 'control-label'
+        .controls
+          = f.text_field :applicant_marriage_date
+
+      .control-group
+        = f.label :applicant_marriage_place, "Marriage Place", class: 'control-label'
+        .controls
+          = f.text_field :applicant_marriage_place
+
+    = render partial: "ancestor", locals: { f: f, ancestor: "spouse" }
+
+  = render partial: "ancestors", locals: { f: f, category: "parents", ancestor_1: "father", ancestor_2: "mother" }
+  = render partial: "ancestors", locals: { f: f, category: "grandparents", ancestor_1: "grandfather", ancestor_2: "grandmother" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_1", ancestor_1: "ancestor_1a", ancestor_2: "ancestor_1b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_2", ancestor_1: "ancestor_2a", ancestor_2: "ancestor_2b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_3", ancestor_1: "ancestor_3a", ancestor_2: "ancestor_3b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_4", ancestor_1: "ancestor_4a", ancestor_2: "ancestor_4b" }
+  = render partial: "ancestors", locals: { f: f, category: "ancestor_5", ancestor_1: "ancestor_5a", ancestor_2: "ancestor_5b" }
+
+  .row
+    .span4
+      = f.submit
