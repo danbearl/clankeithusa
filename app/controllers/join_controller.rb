@@ -1,4 +1,4 @@
-class JoinController < ApplicationController
+class ApplicantsController < ApplicationController
 
   def new
     @applicant = Applicant.new
