@@ -2,7 +2,9 @@ class Applicant < ActiveRecord::Base
 
   include StripeMethods
 
-  attr_accessible :subtotal, :shipping, :type, :address, :city, :state, :zip, :email, 
+  after_initialize :default_values
+
+  attr_accessible :processed, :approved, :subtotal, :shipping, :membership_type, :address, :city, :state, :zip, :email, 
                 :applicant_first_name, :applicant_last_name, :applicant_birth_date, :applicant_birth_place, 
                 :applicant_marriage_date, :applicant_marriage_place, 
                 :spouse_first_name, :spouse_last_name, :spouse_birth_date, 
@@ -42,5 +44,16 @@ class Applicant < ActiveRecord::Base
                 :ancestor_5_marriage_date, :ancestor_5_marriage_place, 
                 :ancestor_5b_first_name, :ancestor_5b_last_name, :ancestor_5b_birth_date, 
                 :ancestor_5b_birth_place, :ancestor_5b_death_date, :ancestor_5b_death_place
+
+  validates_presence_of :subtotal, :membership_type, :address, :city, :state, :zip, :email, :applicant_first_name, :applicant_last_name, :applicant_birth_date, :applicant_birth_place, :father_first_name, :father_last_name, :father_birth_date, :father_birth_place, :mother_first_name, :mother_last_name, :mother_birth_date, :mother_birth_place
+
+  private
+
+  def default_values
+    self.processed ||= false
+    self.approved ||= false
+  end
+
+
 
 end

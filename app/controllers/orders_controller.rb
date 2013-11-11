@@ -16,7 +16,9 @@ class OrdersController < ApplicationController
 
     @order.products = Order.pack_products(session[:cart])
 
-    if @order.save_with_payment(params[:stripe_card_token])
+    total = (100 * (shipping.to_f + subtotal.to_f)).to_i
+
+    if @order.save_with_payment(params[:stripe_card_token], total)
       StoreMailer.order_confirmation(@order).deliver
       StoreMailer.order_notification(@order).deliver
       session[:cart] = []

@@ -3,17 +3,44 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
+  Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
+  applicant.setupForm()
+
   $("#new_applicant").delegate '.checkbox', 'change', (evt) ->
     name = $(this).attr("id").split("_")
     name.pop()
     name = name.join('_')
 
-    toggleDisabled('#applicant_' + name + '_death_date')
+    toggleDisabled('#applicant_' + name + '_death_date_1i')
+    toggleDisabled('#applicant_' + name + '_death_date_2i')
+    toggleDisabled('#applicant_' + name + '_death_date_3i')
     toggleDisabled('#applicant_' + name + '_death_place')
-
 
   toggleDisabled = (id) ->
     if $(id).attr('disabled') == undefined || $(id).attr('disabled') == false
       $(id).attr('disabled', true)
     else
       $(id).attr('disabled', false)
+
+applicant =
+  setupForm: ->
+    $('#new_applicant').submit ->
+      $('input[type=submit]').attr('disabled', true)
+      applicant.processCard()
+      false
+
+  processCard: ->
+    card =
+      number: $('#card_number').val()
+      cvc: $('#card_code').val()
+      expMonth: $('#card_month').val()
+      expYear: $('#card_year').val()
+    Stripe.createToken(card, applicant.handleStripeResponse)
+
+  handleStripeResponse: (status, response) ->
+    if status == 200
+      $('#stripe_card_token').val(response['id'])
+      $('#new_applicant')[0].submit()
+    else
+      $('#stripe_error').text(response.error.message)
+      $('input[type=submit]').attr('disabled', false)

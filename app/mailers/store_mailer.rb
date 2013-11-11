@@ -19,4 +19,10 @@ class StoreMailer < ActionMailer::Base
 
     mail(subject: "New Application For Clan Keith Membership")
   end
+
+  def applicant_confirmation(applicant)
+    @applicant = applicant
+
+    mail(to: applicant.email, subject: "Confirmation of your membership application to Clan Keith")
+  end
 end

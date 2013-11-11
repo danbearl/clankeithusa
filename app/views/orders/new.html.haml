@@ -47,7 +47,6 @@
     = form_for order do |f|
       = f.hidden_field :shipped, value: "false"
       = f.hidden_field :processed, value: "false"
-      = hidden_field_tag :stripe_card_token
       = f.hidden_field :products, value: Order.pack_products(session[:cart])
       
       .control-group

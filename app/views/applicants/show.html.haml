@@ -1,47 +1,58 @@
 %h3 Applicant Information
 
-= "First Name: #{@applicant.applicant_first_name}"
+- unless applicant.approved
+  = link_to "Approve", "/applicants/#{applicant.id}/approve", class: 'btn'
+- else
+  = link_to "Disapprove", "/applicants/#{applicant.id}/approve", class: 'btn'
+
+- unless applicant.processed
+  = link_to "Mark as Processed", "/applicants/#{applicant.id}/process_applicant", class: 'btn'
+
+%br
 %br
 
-= "Last Name: #{@applicant.applicant_last_name}"
+= "First Name: #{applicant.applicant_first_name}"
 %br
 
-= "Birth Date: #{@applicant.applicant_birth_date}"
+= "Last Name: #{applicant.applicant_last_name}"
 %br
 
-= "Birth Place: #{@applicant.applicant_birth_place}"
+= "Birth Date: #{applicant.applicant_birth_date}"
+%br
+
+= "Birth Place: #{applicant.applicant_birth_place}"
 %br
 
 %h4 Address
 
-= "Street: #{@applicant.address}"
+= "Street: #{applicant.address}"
 %br
 
-= "City: #{@applicant.city}"
+= "City: #{applicant.city}"
 %br
 
-= "State: #{@applicant.state}"
+= "State: #{applicant.state}"
 %br
 
-= "Zip: #{@applicant.zip}"
+= "Zip: #{applicant.zip}"
 %br
 
-= "E-Mail: #{@applicant.email}"
+= "E-Mail: #{applicant.email}"
 %br
 
 %h3 Spouse Information
 %h4 Marriage
-= "Marriage Date: #{@applicant.applicant_marriage_date}"
+= "Marriage Date: #{applicant.applicant_marriage_date}"
 %br
 
-= "Marriage Place: #{@applicant.applicant_marriage_place}"
+= "Marriage Place: #{applicant.applicant_marriage_place}"
 
-= render partial: "ancestor", locals: { ancestor: "spouse", applicant: @applicant }
+= render partial: "show_ancestor", locals: { ancestor: "spouse", applicant: applicant }
 
-= render partial: "ancestors", locals: { applicant: @applicant, category: "parents", ancestor_1: "father", ancestor_2: "mother" }
-= render partial: "ancestors", locals: { applicant: @applicant, category: "grandparents", ancestor_1: "grandfather", ancestor_2: "grandmother" }
-= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_1", ancestor_1: "ancestor_1a", ancestor_2: "ancestor_1b" }
-= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_2", ancestor_1: "ancestor_2a", ancestor_2: "ancestor_2b" }
-= render partial: "ancestors", locals: { applicnat: @applicant, category: "ancestor_3", ancestor_1: "ancestor_3a", ancestor_2: "ancestor_3b" }
-= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_4", ancestor_1: "ancestor_4a", ancestor_2: "ancestor_4b" }
-= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_5", ancestor_1: "ancestor_5a", ancestor_2: "ancestor_5b" }
+= render partial: "show_ancestors", locals: { applicant: applicant, category: "parents", ancestor_1: "father", ancestor_2: "mother" }
+= render partial: "show_ancestors", locals: { applicant: applicant, category: "grandparents", ancestor_1: "grandfather", ancestor_2: "grandmother" }
+= render partial: "show_ancestors", locals: { applicant: applicant, category: "ancestor_1", ancestor_1: "ancestor_1a", ancestor_2: "ancestor_1b" }
+= render partial: "show_ancestors", locals: { applicant: applicant, category: "ancestor_2", ancestor_1: "ancestor_2a", ancestor_2: "ancestor_2b" }
+= render partial: "show_ancestors", locals: { applicnat: applicant, category: "ancestor_3", ancestor_1: "ancestor_3a", ancestor_2: "ancestor_3b" }
+= render partial: "show_ancestors", locals: { applicant: applicant, category: "ancestor_4", ancestor_1: "ancestor_4a", ancestor_2: "ancestor_4b" }
+= render partial: "show_ancestors", locals: { applicant: applicant, category: "ancestor_5", ancestor_1: "ancestor_5a", ancestor_2: "ancestor_5b" }

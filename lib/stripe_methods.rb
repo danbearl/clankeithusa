@@ -1,9 +1,8 @@
 module StripeMethods
-  def save_with_payment(stripe_card_token)
+  def save_with_payment(stripe_card_token, total_in_cents)
     if valid?
-      total = (100 * (shipping.to_f + subtotal.to_f)).to_i
       payment_response = Stripe::Charge.create(
-        amount: total,
+        amount: total_in_cents,
         currency: "usd",
         card: stripe_card_token,
         description: "Charge for #{email}"

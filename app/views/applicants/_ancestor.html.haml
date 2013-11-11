@@ -14,7 +14,7 @@
   .control-group
     = f.label "#{ancestor}_birth_date".to_sym, "Birth Date", class: 'control-label'
     .controls
-      = f.text_field "#{ancestor}_birth_date".to_sym
+      = f.date_select "#{ancestor}_birth_date".to_sym, start_year: Time.now.year - 500
 
   .control-group
     = f.label "#{ancestor}_birth_place".to_sym, "Birth Place", class: 'control-label'
@@ -30,7 +30,7 @@
   .control-group
     = f.label "#{ancestor}_death_date".to_sym, "Date of Death", class: 'control-label'
     .controls
-      = f.text_field "#{ancestor}_death_date".to_sym, disabled: true
+      = f.date_select "#{ancestor}_death_date".to_sym, start_date: Time.now.year - 500, disabled: true
 
   .control-group
     = f.label "#{ancestor}_death_place".to_sym, "Place of Death", class: 'control-label'

@@ -10,7 +10,7 @@
     .control-group
       = f.label "#{category}_marriage_date".to_sym, "Marriage Date", class: 'control-label'
       .controls
-        = f.text_field "#{category}_marriage_date".to_sym
+        = f.date_select "#{category}_marriage_date".to_sym, start_date: Time.now.year - 500
 
     .control-group
       = f.label "#{category}_marriage_place".to_sym, "Marriage Place", class: 'control-label'

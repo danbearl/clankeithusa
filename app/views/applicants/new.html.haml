@@ -1,6 +1,5 @@
-.page-header
-  %h1 Application For New Membership
-
+.page-header 
+  %h1 Application For New Membership 
 .row
   .span12
     %p 
@@ -11,15 +10,20 @@
       support your claim of kinship. If you need assistance with this form, please see
       the resources listed in the genealogy section of our site or contact our Secretary
       or your local convener.
-      
+
+- if applicant.errors.full_messages.any?
+  - applicant.errors.full_messages.each do |error_message|
+    = error_message
+
 = form_for applicant, html: { class: 'form-inline' } do |f|
+
   .application-group#applicant-info
     %h3 Applicant Information
 
     .control-group
-      = f.label :type, "Membership Type", class: 'control-label'
+      = f.label :membership_type, "Membership Type", class: 'control-label'
       .controls
-        =f.select :type, options_for_select(@options)
+        =f.select :membership_type, options_for_select(@options)
 
     .horizontal-group
       .control-group
@@ -34,7 +38,7 @@
       .control-group
         = f.label :applicant_birth_date, "Birth Date", class: 'control-label'
         .controls
-          = f.text_field :applicant_birth_date
+          = f.date_select :applicant_birth_date, start_year: Time.now.year - 100
       .control-group
         = f.label :applicant_birth_place, "Birth Place", class: 'control-label'
         .controls
@@ -64,6 +68,7 @@
         .controls
           = f.text_field :zip
 
+      #stripe_error.text-error
       = render "orders/stripe"
 
     .horizontal-group
@@ -84,7 +89,7 @@
       .control-group
         = f.label :applicant_marriage_date, "Marriage Date", class: 'control-label'
         .controls
-          = f.text_field :applicant_marriage_date
+          = f.date_select :applicant_marriage_date, start_year: Time.now.year - 100
 
       .control-group
         = f.label :applicant_marriage_place, "Marriage Place", class: 'control-label'
@@ -103,4 +108,4 @@
 
   .row
     .span4
-      = f.submit
+      = f.submit "Submit Application"
