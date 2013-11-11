@@ -12,4 +12,4 @@ Feature: Page Breadcrumbs
       | category  | text      |
       | public    | true      |
     And I am on that page
-    Then I should see "main page / sub page"
+    Then I should see "main page/ sub page"

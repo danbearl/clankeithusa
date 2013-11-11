@@ -17,4 +17,4 @@
             %td= blurb.name
             %td
               = link_to "Edit", edit_blurb_path(blurb), class: "btn btn-primary btn-mini"
-              = link_to "Destroy", blurb, method: :destroy, confirm: "Are you sure?", class: "btn btn-danger btn-mini"
+              = link_to "Delete", blurb, method: :delete, confirm: "Are you sure?", class: "btn btn-danger btn-mini"

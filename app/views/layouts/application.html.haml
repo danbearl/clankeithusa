@@ -53,10 +53,6 @@
                   %li= link_to 'Comments', comments_path
                   -if !current_user
                     %li= link_to 'Apply For Membership', '/join'
-                  - if !current_user
-                    %li= link_to "Log In", "/log_in"
-                  - else
-                    %li= link_to "Log Out", "/log_out"
       .row
         .span12
           - flash.each do |name, msg|

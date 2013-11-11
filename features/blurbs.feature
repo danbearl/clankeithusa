@@ -11,36 +11,40 @@ Feature: Blurbs
       | name     | test |
       | body     | test |
       | category | text |
+    And the following blurb:
+      | name | sample blurb |
+      | body | blurbity     |
 
   Scenario: Create new blurb
-    Given I am on that page
-    And I follow "Add Blurb"
+    Given I am on the home page
+    And I follow "Blurbs"
+    And I follow "New Blurb"
     And I fill in the following:
-      | blurb_name | blurb        |
+      | blurb_name | blurbity     |
       | blurb_body | sample blurb |
     And I press "Create Blurb"
     Then I should see "Blurb successfully created."
-    And I should see "sample blurb"
+    And I should see "blurbity"
 
   Scenario: Update Blurb
-    Given the following blurb:
-      | name    | blurb        |
-      | body    | sample blurb |
-      | page_id | 1            |
-    And I am on that page
-    And I follow "Edit Blurb"
+    Given I am on the blurbs page
+    When I follow "Edit"
     And I fill in the following:
-      | blurb_body | changed content |
+      | blurb_name | changed name |
     And I press "Update Blurb"
     Then I should see "Blurb successfully updated."
-    And I should see "changed content"
+    And I should see "changed name"
 
   Scenario: Delete Blurb
-    Given the following blurb:
-      | name    | blurb        |
-      | body    | sample blurb |
-      | page_id | 1            |
-    Given I am on that page
-    And I follow "Delete Blurb"
-    Then I should see "blurb was deleted."
+    Given I am on the blurbs page
+    When I follow "Delete"
+    Then I should see "Blurb successfully deleted."
     And I should not see "sample blurb"
+
+  Scenario: Attach a blurb to a page
+    Given I am on that page
+    When I follow "Edit"
+    And I select the following:
+      | Blurb | sample blurb |
+    And I press "Update Page"
+    Then I should see "blurbity"

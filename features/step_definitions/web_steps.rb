@@ -64,6 +64,10 @@ Given /^the date is "(.*?)"$/ do |date|
   Timecop.travel Chronic.parse("#{date} at noon")
 end
 
+Given "I am on the blurbs page" do
+  visit blurbs_path
+end
+
 # Whens
 When /^I follow "(.*?)"$/ do |link|
   click_link(link)

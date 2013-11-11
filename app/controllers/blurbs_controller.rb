@@ -25,6 +25,6 @@ class BlurbsController < ApplicationController
 
   def destroy
     blurb.destroy
-    redirect_to blurbs_path, notice: "#{blurb.name} was deleted."
+    redirect_to blurbs_path, notice: "Blurb successfully deleted."
   end
 end
