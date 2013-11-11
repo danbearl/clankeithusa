@@ -1,0 +1,70 @@
+%h1 Thank you for your application!
+%p This email serves as confirmation that we have received your application for membership to Clan Keith, USA, and as a receipt for your first membership dues payment. Please feel free to contact us if you have any questions regarding the process.
+
+Sincerely,
+Clan Keith, USA
+
+%h3 Receipt for payment:
+%table
+  %tr
+    %th
+      Membership Type
+    %th
+      Payment Received
+    %th
+      Date
+  %tr
+    %td
+      = @applicant.membership_type.capitalize
+    %td
+      = number_to_currency(@applicant.subtotal)
+    %td
+      = Time.now.to_formatted_s(:long)
+
+%h3 Applicantion Information
+
+= "First Name: #{@applicant.applicant_first_name}"
+%br
+
+= "Last Name: #{@applicant.applicant_last_name}"
+%br
+
+= "Birth Date: #{@applicant.applicant_birth_date}"
+%br
+
+= "Birth Place: #{@applicant.applicant_birth_place}"
+%br
+
+%h4 Address
+
+= "Street: #{@applicant.address}"
+%br
+
+= "City: #{@applicant.city}"
+%br
+
+= "State: #{@applicant.state}"
+%br
+
+= "Zip: #{@applicant.zip}"
+%br
+
+= "E-Mail: #{@applicant.email}"
+%br
+
+%h3 Spouse Information
+%h4 Marriage
+= "Marriage Date: #{@applicant.applicant_marriage_date}"
+%br
+
+= "Marriage Place: #{@applicant.applicant_marriage_place}"
+
+= render partial: "ancestor", locals: { ancestor: "spouse", applicant: @applicant }
+
+= render partial: "ancestors", locals: { applicant: @applicant, category: "parents", ancestor_1: "father", ancestor_2: "mother" }
+= render partial: "ancestors", locals: { applicant: @applicant, category: "grandparents", ancestor_1: "grandfather", ancestor_2: "grandmother" }
+= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_1", ancestor_1: "ancestor_1a", ancestor_2: "ancestor_1b" }
+= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_2", ancestor_1: "ancestor_2a", ancestor_2: "ancestor_2b" }
+= render partial: "ancestors", locals: { applicnat: @applicant, category: "ancestor_3", ancestor_1: "ancestor_3a", ancestor_2: "ancestor_3b" }
+= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_4", ancestor_1: "ancestor_4a", ancestor_2: "ancestor_4b" }
+= render partial: "ancestors", locals: { applicant: @applicant, category: "ancestor_5", ancestor_1: "ancestor_5a", ancestor_2: "ancestor_5b" }
