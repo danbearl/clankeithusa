@@ -54,6 +54,4 @@ class Applicant < ActiveRecord::Base
     self.approved ||= false
   end
 
-
-
 end
