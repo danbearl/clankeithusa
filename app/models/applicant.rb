@@ -45,7 +45,7 @@ class Applicant < ActiveRecord::Base
                 :ancestor_5b_first_name, :ancestor_5b_last_name, :ancestor_5b_birth_date, 
                 :ancestor_5b_birth_place, :ancestor_5b_death_date, :ancestor_5b_death_place
 
-  validates_presence_of :subtotal, :membership_type, :address, :city, :state, :zip, :email, :applicant_first_name, :applicant_last_name, :applicant_birth_date, :applicant_birth_place, :father_first_name, :father_last_name, :father_birth_date, :father_birth_place, :mother_first_name, :mother_last_name, :mother_birth_date, :mother_birth_place
+  validates_presence_of :membership_type, :address, :city, :state, :zip, :email, :applicant_first_name, :applicant_last_name, :applicant_birth_date, :applicant_birth_place, :father_first_name, :father_last_name, :father_birth_date, :father_birth_place, :mother_first_name, :mother_last_name, :mother_birth_date, :mother_birth_place
 
   private
 

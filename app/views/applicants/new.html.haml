@@ -11,11 +11,14 @@
       the resources listed in the genealogy section of our site or contact our Secretary
       or your local convener.
 
-- if applicant.errors.full_messages.any?
-  - applicant.errors.full_messages.each do |error_message|
-    = error_message
+
 
 = form_for applicant, html: { class: 'form-inline' } do |f|
+
+  - if applicant.errors.any?
+    %ul
+    - applicant.errors.full_messages.each do |error_message|
+      %li= error_message
 
   .application-group#applicant-info
     %h3 Applicant Information
@@ -23,7 +26,7 @@
     .control-group
       = f.label :membership_type, "Membership Type", class: 'control-label'
       .controls
-        =f.select :membership_type, options_for_select(@options)
+        =f.select :membership_type, options_for_select(options)
 
     .horizontal-group
       .control-group
