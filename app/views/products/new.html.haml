@@ -2,7 +2,7 @@
 .page-header
   %h1=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human, :default => "New #{model_class.model_name.human}")
 
-= form_for product, html: { multipart: true }, builder: Formal::Builder do |f|
+= form_for product, html: { multipart: true } do |f|
   = render partial: "form", locals: { f:f }
 
 = link_to 'Back', products_path

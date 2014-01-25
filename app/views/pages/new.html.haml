@@ -2,7 +2,7 @@
 .page-header
   %h1=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human, :default => "New #{model_class.model_name.human}")
 
-= form_for page, builder: Formal::Builder do |f|
+= form_for page do |f|
   = render partial: "form", locals: { f:f }
 
 = link_to 'Back', root_path
