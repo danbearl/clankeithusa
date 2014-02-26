@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
 
-gem 'authem'
+# gem 'authem'
 gem 'aws-s3'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'buildybuild'
