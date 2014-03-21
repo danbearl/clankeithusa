@@ -23,6 +23,7 @@ Feature: Pages
       | name     | about                   |
       | body     | This is the about page. |
       | category | text                    |
+      | draft    | false                   |
     And I am on that page
     When I follow "Edit"
     And I fill in the following:
@@ -36,6 +37,7 @@ Feature: Pages
       | name     | about                   |
       | body     | This is the about page. |
       | category | text                    |
+      | draft    | false                   |
     And I am on that page
     When I follow "Delete"
     Then I should see "Page successfully deleted."
@@ -45,6 +47,7 @@ Feature: Pages
       | name     | gallery              |
       | body     | A fun little gallery |
       | category | gallery              |
+      | draft    | false                |
     And the following image:
       | name    | test image |
       | page_id | 1          |
@@ -57,6 +60,7 @@ Feature: Pages
       | name     | archive              |
       | body     | A fun little archive |
       | category | archive              |
+      | draft    | false                |
     And the following document:
       | name    | Issue 1 |
       | page_id | 1       |
@@ -65,18 +69,19 @@ Feature: Pages
 
   Scenario: Draft pages do not appear on the site
     Given the following page:
-      | name | sample |
-      | body | this is a draft page |
-      | category | section |
-      | draft | true |
+      | name      | sample               |
+      | body      | this is a draft page |
+      | parent_id | 0                    |
+      | draft     | true                 |
     And I am on the home page
     Then I should not see "sample"
 
   Scenario: Draft pages do appear in the pages index
     Given the following page:
-      | name | sample |
-      | body | this is a draft page |
-      | category | section |
-      | draft | true |
+      | name      | sample               |
+      | body      | this is a draft page |
+      | category  | section              |
+      | parent_id | 0                    |
+      | draft     | true                 |
     And I am on the pages index
     Then I should see "sample"

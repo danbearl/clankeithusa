@@ -45,7 +45,7 @@
                       %li.dropdown
                         %a(href="#" class="dropdown-toggle" data-toggle="dropdown")= p.name
                         %ul.dropdown-menu
-                          - p.sub_pages.reorder(:priority).each do |page|
+                          - p.sub_pages.where(draft: false).reorder(:priority).each do |page|
                             - if page.public or current_user
                               %li= link_to(page.name, slug_path(page.slug))
                   %li= link_to 'Calendar', events_path

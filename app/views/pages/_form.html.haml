@@ -15,6 +15,10 @@
   = f.label :priority
   .controls
     = f.text_field :priority, class: "input-mini"
+.control-group
+  = f.label :draft
+  .controls
+    = f.check_box :draft
 
 %fieldset
   - @i = 0

@@ -10,12 +10,11 @@ class Page < ActiveRecord::Base
   
   accepts_nested_attributes_for :blurb_associations, reject_if: lambda { |a| a[:blurb_id].blank? }, allow_destroy: true
 
-  attr_accessible :body, :name, :slug, :parent_id, :public, :priority, :category, :blurb_associations_attributes
+  attr_accessible :body, :name, :slug, :parent_id, :public, :priority, :category, :blurb_associations_attributes, :draft
 
   default_scope order('created_at DESC, updated_at DESC')
 
   validates_presence_of :name
-
   validates_uniqueness_of :name
 
   before_save :update_slug

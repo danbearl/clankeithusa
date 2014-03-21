@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140114010129) do
+ActiveRecord::Schema.define(:version => 20140320223617) do
 
   create_table "announcements", :force => true do |t|
     t.string   "name"
@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(:version => 20140114010129) do
     t.boolean  "public"
     t.integer  "priority"
     t.string   "category"
+    t.boolean  "draft"
   end
 
   create_table "products", :force => true do |t|
