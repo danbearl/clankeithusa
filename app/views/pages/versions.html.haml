@@ -1,0 +1,29 @@
+- model_class = Page
+.page-header
+  %h1= "#{page.name} Versions"
+
+.accordion#versions_index
+%table.table.table-striped
+  %tbody
+    - page.versions.reverse.each do |version|
+      %tr
+        %td
+          .accordion-group
+            .accordion-heading
+              = link_to version.created_at, "#collapse_#{version.id}", "data-toggle" => "collapse", class: "accordion-toggle", "data-parent" => "#versions index"
+        %tr
+          %td
+            .accordion-body.collapse{ id: "collapse_#{version.id}" }
+              .accordion-inner
+                %table.table.table-striped
+                  %tr
+                    %th Event
+                    %th Author
+                    %th Actions
+                  %tr
+                    %td= version.event
+                    - if version.whodunnit == nil || version.whodunnit == 0
+                      %td Unknown
+                    - else
+                      %td= User.find(version.whodunnit.to_i).email
+                    %td= link_to "Restore", restore_page_path(slug: page.slug, version_id: version.id), class: 'btn btn-primary'

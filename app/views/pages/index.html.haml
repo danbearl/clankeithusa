@@ -2,7 +2,7 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
   
-.accordian#pages_index
+.accordion#pages_index
 %table.table.table-striped
   %tbody
     - top_pages.each do |section|
@@ -22,6 +22,8 @@
                     %th= model_class.human_attribute_name(:updated_at)
                     %th= model_class.human_attribute_name(:priority)
                     %th Public
+                    %th Draft
+                    %th Versions
                     %th=t '.actions', :default => t("helpers.actions")
                   = render partial: "index_row", locals: { page: section }
                   = raw index_rows(section.sub_pages)
