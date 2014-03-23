@@ -7,6 +7,7 @@ class Page < ActiveRecord::Base
   has_many :blurb_associations, dependent: :destroy
   has_many :blurbs, through: :blurb_associations
   has_many :documents
+  has_paper_trail
   
   accepts_nested_attributes_for :blurb_associations, reject_if: lambda { |a| a[:blurb_id].blank? }, allow_destroy: true
 

@@ -14,6 +14,7 @@ gem 'fog'
 gem 'formal'
 gem 'haml-rails'
 gem 'jquery-rails', '2.3.0'
+gem 'paper_trail', '~>3.0.1'
 gem 'rails', '3.2.11'
 gem 'rdiscount'
 gem 'rmagick', require: false
