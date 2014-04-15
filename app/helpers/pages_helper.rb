@@ -9,6 +9,8 @@ module PagesHelper
           <td>#{ page.updated_at.to_s(:us) }</td>
           <td>#{page.priority}</td>
           <td>#{page.public}</td>
+          <td>#{page.draft}</td>
+          <td>#{link_to page.versions.count, page_versions_path(page.slug)}</td>
           <td>
             #{link_to "Edit", edit_slug_path(page.slug), class: 'btn btn-mini'}
             #{link_to "Destroy", slug_path(page.slug), data: {confirm: "Are you sure?"}, class: 'btn btn-mini btn-danger'}
