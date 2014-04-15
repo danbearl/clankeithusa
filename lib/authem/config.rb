@@ -11,7 +11,7 @@ module Authem
     end
 
     def user_class
-      @user_class.constantize
+      "User".constantize
     end
 
     def user_class=(user_class)

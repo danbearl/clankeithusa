@@ -50,4 +50,14 @@ class PagesController < ApplicationController
     redirect_to :root, notice: "Page successfully deleted."
   end
 
+  def restore
+    page = Page.find_by_slug(params[:slug])
+    page = page.versions.where(id: params[:version_id]).first.reify
+
+    if(page.save)
+      redirect_to pages_path, notice: "Page restored."
+    else
+      redirect_to page_versions_path(page.slug), notice: "An error occurred while attempting to restore the version."
+    end
+  end
 end

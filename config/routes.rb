@@ -12,6 +12,8 @@ Clankeithusa::Application.routes.draw do
   get "log_out" => "user_sessions#destroy", as: "log_out"
   get "applicants/:id/approve" => 'applicants#approve'
   get "applicants/:id/process_applicant" => 'applicants#process_applicant'
+  get ":slug/restore" => 'pages#restore', as: 'restore_page'
+  get ":slug/versions" => 'pages#versions', as: 'page_versions'
 
   resources :announcements
   resources :applicants
