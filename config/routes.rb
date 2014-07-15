@@ -14,6 +14,7 @@ Clankeithusa::Application.routes.draw do
   get "applicants/:id/process_applicant" => 'applicants#process_applicant'
   get ":slug/restore" => 'pages#restore', as: 'restore_page'
   get ":slug/versions" => 'pages#versions', as: 'page_versions'
+  match "heatbeat", to: proc { [200, {}, ''.chars] }
 
   resources :announcements
   resources :applicants
