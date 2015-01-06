@@ -32,7 +32,6 @@
                   %li= link_to "Events", events_path
                   %li= link_to "Products", products_path
                   %li= link_to "Orders", orders_path
-                  %li= link_to "Applicants", applicants_path
       .row
         .span12
           .navbar.nav-fixed-top
@@ -51,8 +50,6 @@
                   %li= link_to 'Calendar', events_path
                   %li= link_to 'Store', products_path
                   %li= link_to 'Comments', comments_path
-                  -if !current_user
-                    %li= link_to 'Apply For Membership', '/join'
       .row
         .span12
           - flash.each do |name, msg|
@@ -76,8 +73,6 @@
             %hr
             %p
               = link_to "Home", :root
-              |
-              = link_to "Join", '/join'
               |
               = link_to "Calendar", events_path
               |

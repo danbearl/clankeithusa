@@ -6,8 +6,8 @@ Clankeithusa::Application.routes.draw do
   get 'comments/:id/approve' => 'comments#approve'
   match "order/payment" => "orders#payment"
   get "cart" => "cart#show", as: "cart"
-  match "join" => "applicants#new", as: "join", via: :get
-  match "join" => "applicants#create", as: "join", via: :post
+  # match "join" => "applicants#new", as: "join", via: :get
+  # match "join" => "applicants#create", as: "join", via: :post
   get "log_in" => "user_sessions#new", as: "log_in"
   get "log_out" => "user_sessions#destroy", as: "log_out"
   get "applicants/:id/approve" => 'applicants#approve'
@@ -17,7 +17,7 @@ Clankeithusa::Application.routes.draw do
   match 'heartbeat', to: proc { [200, {}, ''.chars] }
 
   resources :announcements
-  resources :applicants
+  # resources :applicants
   resources :blurb_associations
   resources :blurbs
   resources :comments
