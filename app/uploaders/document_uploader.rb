@@ -16,18 +16,18 @@ class DocumentUploader < CarrierWave::Uploader::Base
     end
   end
 
-  version :thumb do
-    process :resize_to_limit => [200, 200]
-    process :convert => 'jpg'
-    process :cover
-    process :convert => 'jpg'
-    def full_filename (for_file = model.logo.file)
-      super.chomp(File.extname(super)) + '.jpg'
-    end
-  end
+  # version :thumb do
+  #   process :resize_to_limit => [200, 200]
+  #   process :convert => 'jpg'
+  #   process :cover
+  #   process :convert => 'jpg'
+  #   def full_filename (for_file = model.logo.file)
+  #     super.chomp(File.extname(super)) + '.jpg'
+  #   end
+  # end
 
   def extension_white_list
-    %w(pdf)
+    %w(pdf doc)
   end
 
 end
