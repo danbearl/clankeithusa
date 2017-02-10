@@ -3,7 +3,7 @@ ruby "2.1.10"
 
 # gem 'authem'
 gem 'aws-s3'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~>3.1.0'
 gem 'buildybuild'
 gem 'carrierwave'
 gem 'decent_exposure'
